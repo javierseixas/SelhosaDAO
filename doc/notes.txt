@@ -1,0 +1,19 @@
+control (chema)
+recepcion (toni)
+cam2 (paco)
+tv1 (jose)
+tv2 (xavi)
+cam1 (joseluis)
+vaio (paco)
+
+al tecnico le salen sus aparatos
+el usuario con permisos de gestión podrá filtrar qué aparatos ver (control y recepcion)
+
+estudiar los envios de los vaio, cómo hacerlo a nivel de flujo de trabajo y en qué aplicación meterlo
+
+
+-----------------------
+
+ESTRUCTURA EN SYMFONY
+
+/src/Selhosa/ReparationBundle
