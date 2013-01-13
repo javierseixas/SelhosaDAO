@@ -1,0 +1,19 @@
+Selhosa\ReparationBundle\Entity\WorkOrder:
+    type: entity
+    table: WorkOrder
+    repositoryClass: Selhosa\ReparationBundle\Entity\WorkOrderRepository
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        reference:
+            type: string
+            length: '20'
+        model:
+            type: string
+            length: '50'
+        priority:
+            type: boolean
+    lifecycleCallbacks: {  }

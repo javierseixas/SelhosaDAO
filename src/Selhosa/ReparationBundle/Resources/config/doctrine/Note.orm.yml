@@ -1,0 +1,14 @@
+Selhosa\ReparationBundle\Entity\Note:
+    type: entity
+    table: Note
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        created_at:
+            type: datetime
+        comment:
+            type: text
+    lifecycleCallbacks: {  }

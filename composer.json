@@ -20,7 +20,8 @@
         "jms/di-extra-bundle": "1.1.*",
         "kriswallsmith/assetic": "1.1.*@dev",
         "mopa/bootstrap-bundle": "dev-master",
-        "twitter/bootstrap": "dev-master"
+        "twitter/bootstrap": "dev-master",
+        "doctrine/doctrine-migrations-bundle": "dev-master"
     },
     "repositories": [
         {

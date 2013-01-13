@@ -17,3 +17,30 @@ estudiar los envios de los vaio, cómo hacerlo a nivel de flujo de trabajo y en 
 ESTRUCTURA EN SYMFONY
 
 /src/Selhosa/ReparationBundle
+
+
+
+-----------------------
+
+DIAGRAMA UML
+				Notes								 User
+													   |
+Status ----- WorkOrder ---------- REL_WO_TECHNICIAN ---------- Technician
+				|
+			DoaWorkOrder
+
+StatusLog
+
+
+4. primer template. Usar el que viene de Mapo
+5. Controller primer template
+
+6. Type para crear reparaciones
+7. Template formulario con Boostrap
+
+10. Pensar cómo se gestionarán los diferentes listados
+
+1. Crear un AjaxController
+2. Poner el prefijo dao para la URL
+
+20. Instalar el FOSUserBundle
