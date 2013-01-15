@@ -2,8 +2,6 @@
 
 namespace Selhosa\ReparationBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * WorkOrder
  */
@@ -28,6 +26,17 @@ class WorkOrder
      * @var boolean
      */
     private $priority;
+
+    /**
+     * @var 
+     */
+    private $notes;
+
+
+    public function __construct()
+    {
+        // $this->notes = ;
+    }
 
 
     /**

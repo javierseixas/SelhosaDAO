@@ -11,4 +11,12 @@ Selhosa\ReparationBundle\Entity\Note:
             type: datetime
         comment:
             type: text
+    manyToOne:
+        workorder:
+            targetEntity: WorkOrder
+            inversedBy: notes
+            joinColumn:
+                name: workorder_id
+                referencedColumnName: id
+                nullable: false
     lifecycleCallbacks: {  }

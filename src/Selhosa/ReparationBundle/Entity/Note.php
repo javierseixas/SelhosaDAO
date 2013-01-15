@@ -2,8 +2,6 @@
 
 namespace Selhosa\ReparationBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * Note
  */
@@ -23,6 +21,11 @@ class Note
      * @var string
      */
     private $comment;
+
+    /**
+     * @var \Selhosa\ReparationBundle\Entity\WorkOrder
+     */
+    private $workorder;
 
 
     /**
