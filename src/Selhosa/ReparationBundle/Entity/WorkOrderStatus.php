@@ -9,6 +9,9 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class WorkOrderStatus
 {
+
+    const STATUS_INIT = 10;
+
     /**
      * @var integer
      */
@@ -23,6 +26,20 @@ class WorkOrderStatus
      * @var string
      */
     private $keyword;
+
+    /**
+     * @var
+     */
+    private $workorders;
+
+    /**
+     * @param intenger $id
+     */
+    function __construct($id = self::STATUS_INIT)
+    {
+        $this->id = $id;
+        // $this->workorders = $workorders;
+    }
 
 
     /**

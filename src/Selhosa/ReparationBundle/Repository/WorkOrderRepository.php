@@ -1,6 +1,6 @@
 <?php
 
-namespace Selhosa\ReparationBundle\Entity;
+namespace Selhosa\ReparationBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
 

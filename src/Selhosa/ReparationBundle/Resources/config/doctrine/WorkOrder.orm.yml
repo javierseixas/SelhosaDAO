@@ -9,7 +9,7 @@ Selhosa\ReparationBundle\Entity\WorkOrder:
     discriminatorMap:
         workorder: Selhosa\ReparationBundle\Entity\WorkOrder
         daoworkorder: Selhosa\ReparationBundle\Entity\DaoWorkOrder
-    repositoryClass: Selhosa\ReparationBundle\Entity\WorkOrderRepository
+    repositoryClass: Selhosa\ReparationBundle\Repository\WorkOrderRepository
     fields:
         id:
             type: integer
@@ -28,4 +28,12 @@ Selhosa\ReparationBundle\Entity\WorkOrder:
         notes:
             targetEntity: Note
             mappedBy: workorder
+    manyToOne:
+        current_status:
+            targetEntity: WorkOrderStatus
+            inversedBy: workorders
+            joinColumn:
+                name: current_status_id
+                referencedColumnName: id
+                nullable: false
     lifecycleCallbacks: {  }

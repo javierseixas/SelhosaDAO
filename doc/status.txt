@@ -1,0 +1,26 @@
+10  mirar (aparato nuevo para diagnosticar)
+20  pedir material (los materiales están imputados y se tiene que hacer la petición en el assist)
+30  recepcionar material (el material se ha pedido y está pendiente de que tenga todo el material disponible)
+40  reparar (se dispone del material y se puede iniciar reparación)
+50  cerrar  (está reparada y se puede cerrar en el gestiplus)
+60  cerradas
+
+SET FOREIGN_KEY_CHECKS=0;
+TRUNCATE table WorkOrder;
+SET FOREIGN_KEY_CHECKS=1;
+
+INSERT INTO WorkOrderStatus (id, description) VALUES
+(10, 'Mirar'),
+(20, 'Pedir material'),
+(30, 'Recepcionar material'),
+(40, 'Reparar'),
+(50, 'Cerrar'),
+(60, 'Cerradas');
+
+
+10  diagnose
+20  orderMaterial
+30  receiveMaterial
+40  repair
+50  close
+60  closed

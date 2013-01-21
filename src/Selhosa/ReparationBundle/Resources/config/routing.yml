@@ -1,3 +1,12 @@
 selhosa_reparation_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: SelhosaReparationBundle:Default:index }
+    pattern:  /ordres-treball/{status}
+    defaults: { _controller: SelhosaReparationBundle:Crud:index }
+selhosa_reparation_create:
+    pattern:  /entrar-ot
+    defaults: { _controller: SelhosaReparationBundle:Crud:create }
+selhosa_reparation_update:
+    pattern:  /editar-ot/{id}
+    defaults: { _controller: SelhosaReparationBundle:Crud:update }
+selhosa_reparation_change_status:
+    pattern:  /ajax/canviar-estat-ot
+    defaults: { _controller: SelhosaReparationBundle:WorkFlow:changeStatus }

@@ -4,4 +4,4 @@ parameters:
 services:
 #    selhosa_reparation.example:
 #        class: %selhosa_reparation.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
+#        arguments: [@service_id, "plain_value", %parameter%]services:

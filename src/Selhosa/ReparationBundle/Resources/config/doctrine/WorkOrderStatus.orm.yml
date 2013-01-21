@@ -13,4 +13,8 @@ Selhosa\ReparationBundle\Entity\WorkOrderStatus:
         keyword:
             type: string
             length: '30'
+    oneToMany:
+        workorders:
+            targetEntity: WorkOrder
+            mappedBy: status
     lifecycleCallbacks: {  }

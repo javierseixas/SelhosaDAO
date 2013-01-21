@@ -32,6 +32,11 @@ class WorkOrder
      */
     private $notes;
 
+    /**
+     * @var WorkOrderStatus
+     */
+    private $current_status;
+
 
     public function __construct()
     {
@@ -117,4 +122,25 @@ class WorkOrder
     {
         return $this->priority;
     }
+
+    /**
+     * @param $current_status
+     * @return WorkOrder
+     */
+    public function setCurrentStatus($current_status)
+    {
+        $this->current_status = $current_status;
+
+        return $this;
+    }
+
+    /**
+     * @return WorkOrderStatus
+     */
+    public function getCurrentStatus()
+    {
+        return $this->current_status;
+    }
+
+
 }

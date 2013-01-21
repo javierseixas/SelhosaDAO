@@ -2,12 +2,84 @@
 <html>
     <head>
         <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        {% block stylesheets %}
+            <link href="{{ asset('bundles/selhosareparation/css/bootstrap.css') }}" rel="stylesheet" type="text/css" />
+            <link href="{{ asset('bundles/selhosareparation/css/bootstrap-responsive.min.css') }}" rel="stylesheet" type="text/css" />
+        {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+        {% block body %}
+            {% block navbar %}
+                <div class="navbar">
+                    <div class="navbar-inner">
+                        <div class="container">
+                            <a data-target=".navbar-responsive-collapse" data-toggle="collapse" class="btn btn-navbar collapsed">
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </a>
+                            <a href="#" class="brand">Selhosa.DAO</a>
+                            <div class="nav-collapse navbar-responsive-collapse collapse" style="height: 0px;">
+                                <ul class="nav">
+                                    <li class="dropdown">
+                                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">Ordres de treball <b class="caret"></b></a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="{{ path('selhosa_reparation_create') }}">Nova OT</a></li>
+                                            <li class="divider"></li>
+                                            <li><a href="#">Mirar</a></li>
+                                            <li><a href="#">Demanar material</a></li>
+                                            <li><a href="#">Rebre material</a></li>
+                                            <li><a href="#">Reparar (Material rebut)</a></li>
+                                            <li><a href="#">Tancar (Finalitzades)</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                                <form action="" class="navbar-search pull-left">
+                                    <input type="text" placeholder="Search" class="search-query span2">
+                                </form>
+                            </div><!-- /.nav-collapse -->
+                        </div>
+                    </div><!-- /navbar-inner -->
+                </div>
+            {% endblock navbar %}
+
+            <div class="container-fluid">
+            {% block container %}
+            {% endblock container %}
+            </div>
+
+
+        {% endblock body %}
+        {% block foot_script %}
+            {# To only use a subset or add more js overwrite and copy paste this block
+            To speed up page loads save a copy of jQuery in your project and override this block to include the correct path
+            Otherwise the regeneration is done on every load in dev more with use_controller: true
+             #}
+            {% javascripts
+            'http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js'
+            '@MopaBootstrapBundle/Resources/bootstrap/js/bootstrap-transition.js'
+            '@MopaBootstrapBundle/Resources/bootstrap/js/bootstrap-modal.js'
+            '@MopaBootstrapBundle/Resources/bootstrap/js/bootstrap-dropdown.js'
+            '@MopaBootstrapBundle/Resources/bootstrap/js/bootstrap-scrollspy.js'
+            '@MopaBootstrapBundle/Resources/bootstrap/js/bootstrap-tab.js'
+            '@MopaBootstrapBundle/Resources/bootstrap/js/bootstrap-tooltip.js'
+            '@MopaBootstrapBundle/Resources/bootstrap/js/bootstrap-popover.js'
+            '@MopaBootstrapBundle/Resources/bootstrap/js/bootstrap-alert.js'
+            '@MopaBootstrapBundle/Resources/bootstrap/js/bootstrap-button.js'
+            '@MopaBootstrapBundle/Resources/bootstrap/js/bootstrap-collapse.js'
+            '@MopaBootstrapBundle/Resources/bootstrap/js/bootstrap-carousel.js'
+            '@MopaBootstrapBundle/Resources/bootstrap/js/bootstrap-typeahead.js'
+            '@MopaBootstrapBundle/Resources/public/js/mopabootstrap-collection.js'
+            '@MopaBootstrapBundle/Resources/public/js/mopabootstrap-subnav.js'
+            %}
+            <script type="text/javascript" src="{{ asset_url }}"></script>
+            {% endjavascripts %}
+            {% block java %}
+                {% endblock java %}
+
+        {% endblock foot_script %}
     </body>
 </html>

@@ -1,0 +1,16 @@
+{% extends "::base.html.twig" %}
+
+{% block container %}
+
+    <div class="row-fluid">
+        <div class="span6"><h2>Entrar OT</h2></div>
+    </div>
+
+	<div class="row-fluid">
+        <form action="{{ path('selhosa_reparation_create') }}" method="post" {{ form_enctype(form) }}>
+            {{ form_widget(form) }}
+
+            <input type="submit" />
+        </form>
+	</div>
+{% endblock container %}

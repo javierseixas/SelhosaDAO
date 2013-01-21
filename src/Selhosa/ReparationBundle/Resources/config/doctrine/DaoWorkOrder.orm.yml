@@ -1,6 +1,6 @@
 Selhosa\ReparationBundle\Entity\DaoWorkOrder:
     type: entity
     table: DaoWorkOrder
-    repositoryClass: Selhosa\ReparationBundle\Entity\DaoWorkOrderRepository
+    repositoryClass: Selhosa\ReparationBundle\Repository\DaoWorkOrderRepository
     fields:
     lifecycleCallbacks: {  }
