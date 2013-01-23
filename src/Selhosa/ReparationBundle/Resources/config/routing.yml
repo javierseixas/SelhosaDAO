@@ -1,5 +1,5 @@
 selhosa_reparation_homepage:
-    pattern:  /ordres-treball/{status}
+    pattern:  /ordres-treball/{statusKeyword}
     defaults: { _controller: SelhosaReparationBundle:Crud:index }
 selhosa_reparation_create:
     pattern:  /entrar-ot

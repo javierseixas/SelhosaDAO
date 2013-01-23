@@ -9,12 +9,20 @@ use Selhosa\ReparationBundle\Entity\WorkOrderStatus;
 
 class CrudController extends Controller
 {
-    public function indexAction($statusId = 10)
+    public function indexAction($statusKeyword = 'diagnose')
     {
+        $currentStatus = $this->getDoctrine()->getManager()->getRepository('SelhosaReparationBundle:WorkOrderStatus')->findOneByKeyword($statusKeyword);
 
-        $workorders = $this->getDoctrine()->getManager()->getRepository('SelhosaReparationBundle:DaoWorkOrder')->findByStatus($statusId);
+        // TODO Check if the statusKeyword exists and throw Exception en case does not
 
-        return $this->render('SelhosaReparationBundle:Crud:index.html.twig', array('workorders' => $workorders));
+        $workorders = $this->getDoctrine()->getManager()->getRepository('SelhosaReparationBundle:DaoWorkOrder')->findByStatus($currentStatus->getId());
+
+        $buttonsTemplate = $this->get('reparation.workflow.buttons.dumper')->getTemplate($statusKeyword);
+
+        return $this->render('SelhosaReparationBundle:Crud:index.html.twig', array(
+            'workorders' => $workorders,
+            'buttonsTemplate' => $buttonsTemplate
+        ));
     }
 
     public function createAction()

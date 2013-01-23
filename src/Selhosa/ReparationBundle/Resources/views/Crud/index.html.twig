@@ -29,8 +29,7 @@
                     <td>20/01/2013</td>
                     <td>Francisco Pérez</td>
                     <td>
-                        <button class="btn btn-mini change-workorderstatus" type="button" data-workorderid="{{ workorder.id }}" data-newstatuskeyword="close">Reparada</button>
-                        <button class="btn btn-mini change-workorderstatus" type="button" data-workorderid="{{ workorder.id }}" data-newstatuskeyword="orderMaterial">Mirada</button>
+                        {% include 'SelhosaReparationBundle:WorkFlowButtons:' ~ buttonsTemplate %}
                     </td>
                     <td>
                         <div class="btn-group">
