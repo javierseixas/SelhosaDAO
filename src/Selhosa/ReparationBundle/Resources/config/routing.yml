@@ -1,4 +1,7 @@
 selhosa_reparation_homepage:
+    pattern:  /
+    defaults: { _controller: SelhosaReparationBundle:Crud:index }
+selhosa_reparation_list:
     pattern:  /ordres-treball/{statusKeyword}
     defaults: { _controller: SelhosaReparationBundle:Crud:index }
 selhosa_reparation_create:
