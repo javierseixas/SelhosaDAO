@@ -29,11 +29,11 @@
                                         <ul class="dropdown-menu">
                                             <li><a href="{{ path('selhosa_reparation_create') }}">Nova OT</a></li>
                                             <li class="divider"></li>
-                                            <li><a href="#">Mirar</a></li>
-                                            <li><a href="#">Demanar material</a></li>
-                                            <li><a href="#">Rebre material</a></li>
-                                            <li><a href="#">Reparar (Material rebut)</a></li>
-                                            <li><a href="#">Tancar (Finalitzades)</a></li>
+                                            <li><a href="{{ path('selhosa_reparation_homepage', {statusKeyword : 'diagnose'}) }}">Mirar</a></li>
+                                            <li><a href="{{ path('selhosa_reparation_homepage', {statusKeyword : 'orderMaterial'}) }}">Demanar material</a></li>
+                                            <li><a href="{{ path('selhosa_reparation_homepage', {statusKeyword : 'receiveMaterial'}) }}">Rebre material</a></li>
+                                            <li><a href="{{ path('selhosa_reparation_homepage', {statusKeyword : 'repair'}) }}">Reparar (Material rebut)</a></li>
+                                            <li><a href="{{ path('selhosa_reparation_homepage', {statusKeyword : 'close'}) }}">Tancar (Finalitzades)</a></li>
                                         </ul>
                                     </li>
                                 </ul>
