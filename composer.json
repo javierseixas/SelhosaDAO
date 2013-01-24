@@ -22,7 +22,8 @@
         "mopa/bootstrap-bundle": "dev-master",
         "twitter/bootstrap": "dev-master",
         "doctrine/doctrine-migrations-bundle": "dev-master",
-        "friendsofsymfony/user-bundle": "*"
+        "friendsofsymfony/user-bundle": "2.0.*@dev",
+        "stof/doctrine-extensions-bundle": "dev-master"
     },
     "repositories": [
         {

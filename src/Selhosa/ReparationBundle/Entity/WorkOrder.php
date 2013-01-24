@@ -2,6 +2,9 @@
 
 namespace Selhosa\ReparationBundle\Entity;
 
+use Selhosa\UserBundle\Entity\User;
+use Doctrine\Common\Collections\ArrayCollection;
+
 /**
  * WorkOrder
  */
@@ -15,22 +18,32 @@ class WorkOrder
     /**
      * @var string
      */
-    private $reference;
+    protected $reference;
 
     /**
      * @var string
      */
-    private $model;
+    protected $model;
 
     /**
      * @var boolean
      */
-    private $priority;
+    protected $priority;
 
     /**
-     * @var 
+     * @var \Datetime
      */
-    private $notes;
+    protected $createdAt;
+
+    /**
+     * @var \Doctrine\Common\Collections\ArrayCollection
+     */
+    protected $notes;
+
+    /**
+     * @var \Doctrine\Common\Collections\ArrayCollection
+     */
+    protected $technicians;
 
     /**
      * @var WorkOrderStatus
@@ -40,7 +53,8 @@ class WorkOrder
 
     public function __construct()
     {
-        // $this->notes = ;
+        $this->notes = new ArrayCollection();
+        $this->technicians = new ArrayCollection();
     }
 
 
@@ -141,6 +155,50 @@ class WorkOrder
     {
         return $this->current_status;
     }
+
+    /**
+     * @param \Datetime $createdAt
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * @return \Datetime
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * @param \Selhosa\UserBundle\Entity\User $technician
+     */
+    public function addTechnician(User $technician)
+    {
+        if (!$this->workorders->contains($technician))
+            $this->workorders->add($technician);
+    }
+
+    /**
+     * @param WorkOrder $technician
+     */
+    public function removeTechnician(WorkOrder $technician)
+    {
+        $this->clients->removeElement($technician);
+    }
+
+    /**
+     * @return \Doctrine\Common\Collections\ArrayCollection
+     */
+    public function getTechnicians()
+    {
+        return $this->technicians;
+    }
+
 
 
 }

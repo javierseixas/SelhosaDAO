@@ -10,6 +10,6 @@ class DaoWorkOrder extends WorkOrder
     /**
      * @var integer
      */
-    private $id;
+    private  $id;
 
 }

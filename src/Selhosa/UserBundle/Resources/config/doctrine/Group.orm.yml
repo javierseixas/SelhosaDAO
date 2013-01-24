@@ -1,0 +1,10 @@
+Selhosa\UserBundle\Entity\Group:
+    type: entity
+    table: Groups
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    lifecycleCallbacks: {  }

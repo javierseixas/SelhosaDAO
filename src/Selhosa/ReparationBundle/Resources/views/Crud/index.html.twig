@@ -17,6 +17,7 @@
                 <tr>
                     <th>OT</th>
                     <th>Entrada</th>
+                    <th></th>
                     <th>Tècnic</th>
                     <th>Accions</th>
                     <th></th>
@@ -26,8 +27,17 @@
                 {% for workorder in workorders %}
                 <tr id="workorder-{{ workorder.id }}">
                     <td>{{ workorder.reference }}</td>
-                    <td>20/01/2013</td>
-                    <td>Francisco Pérez</td>
+                    <td>{{ workorder.createdAt | date('d/m/Y') }}</td>
+                    <td>
+                        {% if workorder.priority %}
+                            <img src="{{ asset('bundles/selhosareparation/images/legend/priority.png') }}" alt="Prioritària" title="Aquesta OT és prioritària" />
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% for technician in workorder.technicians %}
+                            {{ technician.username }}
+                        {% endfor %}
+                    </td>
                     <td>
                         {% include 'SelhosaReparationBundle:WorkFlowButtons:' ~ buttonsTemplate %}
                     </td>

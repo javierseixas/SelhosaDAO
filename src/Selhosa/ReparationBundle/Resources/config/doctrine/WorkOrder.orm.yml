@@ -24,6 +24,13 @@ Selhosa\ReparationBundle\Entity\WorkOrder:
             length: '50'
         priority:
             type: boolean
+        createdAt:
+            type: datetime
+            nullable: false
+            column: created_at
+            gedmo:
+                timestampable:
+                  on: create
     oneToMany:
         notes:
             targetEntity: Note
@@ -36,4 +43,8 @@ Selhosa\ReparationBundle\Entity\WorkOrder:
                 name: current_status_id
                 referencedColumnName: id
                 nullable: false
+    manyToMany:
+        technicians:
+            targetEntity: Selhosa\UserBundle\Entity\User
+            mappedBy: workorders
     lifecycleCallbacks: {  }

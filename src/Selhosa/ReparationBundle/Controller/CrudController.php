@@ -41,6 +41,11 @@ class CrudController extends Controller
             ->add('priority', 'checkbox', array(
               'required' => false
             ))
+            ->add('technicians', 'entity', array(
+                'class' => 'UserBundle:User',
+                'property' => 'username',
+                'multiple' => true
+            ))
             ->getForm();
 
         if ($request->isMethod('POST')) {
@@ -73,6 +78,11 @@ class CrudController extends Controller
             ))
             ->add('priority', 'checkbox', array(
               'required' => false
+            ))
+            ->add('technicians', 'entity', array(
+                'class' => 'UserBundle:User',
+                'property' => 'username',
+                'multiple' => true
             ))
             ->getForm();
 

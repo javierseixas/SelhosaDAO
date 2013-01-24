@@ -1,0 +1,33 @@
+Selhosa\UserBundle\Entity\User:
+    type: entity
+    table: User
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    manyToMany:
+      groups:
+        targetEntity: Group
+        joinTable:
+          name: User_Groups
+          joinColumns:
+            user_id:
+             referencedColumnName: id
+          inverseJoinColumns:
+            group_id:
+              referencedColumnName: id
+
+      workorders:
+        targetEntity: Selhosa\ReparationBundle\Entity\WorkOrder
+        inversedBy: technicians
+        joinTable:
+          name: Technician_WorkOrder
+          joinColumns:
+            technician_id:
+             referencedColumnName: id
+          inverseJoinColumns:
+            workorder_id:
+              referencedColumnName: id
+    lifecycleCallbacks: {  }

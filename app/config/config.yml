@@ -51,6 +51,10 @@ doctrine:
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"
         auto_mapping: true
+#        entity_managers:
+#            defaults:
+#                mappings:
+#                    SelhosaUserBundle: ~
 
 # Swiftmailer Configuration
 swiftmailer:
@@ -70,3 +74,10 @@ fos_user:
     db_driver: orm
     firewall_name: main
     user_class: Selhosa\UserBundle\Entity\User
+    group:
+        group_class:  Selhosa\UserBundle\Entity\Group
+
+stof_doctrine_extensions:
+    orm:
+      default:
+            timestampable: true
