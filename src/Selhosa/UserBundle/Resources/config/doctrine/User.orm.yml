@@ -18,16 +18,7 @@ Selhosa\UserBundle\Entity\User:
           inverseJoinColumns:
             group_id:
               referencedColumnName: id
-
       workorders:
-        targetEntity: Selhosa\ReparationBundle\Entity\WorkOrder
-        inversedBy: technicians
-        joinTable:
-          name: Technician_WorkOrder
-          joinColumns:
-            technician_id:
-             referencedColumnName: id
-          inverseJoinColumns:
-            workorder_id:
-              referencedColumnName: id
+          targetEntity: Selhosa\ReparationBundle\Entity\WorkOrder
+          mappedBy: technicians
     lifecycleCallbacks: {  }
