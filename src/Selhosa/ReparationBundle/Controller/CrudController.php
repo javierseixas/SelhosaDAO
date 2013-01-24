@@ -5,6 +5,7 @@ namespace Selhosa\ReparationBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Selhosa\ReparationBundle\Entity\DaoWorkOrder;
 use Selhosa\ReparationBundle\Entity\WorkOrderStatus;
+use Selhosa\ReparationBundle\Form\Type\WorkorderType;
 
 
 class CrudController extends Controller
@@ -33,20 +34,7 @@ class CrudController extends Controller
         $status = $this->getDoctrine()->getManager()->getRepository('SelhosaReparationBundle:WorkOrderStatus')->find(10);
         $workorder->setCurrentStatus($status);
 
-        $form = $this->createFormBuilder($workorder)
-            ->add('reference', 'text')
-            ->add('model', 'text', array(
-                'required' => false
-            ))
-            ->add('priority', 'checkbox', array(
-              'required' => false
-            ))
-            ->add('technicians', 'entity', array(
-                'class' => 'UserBundle:User',
-                'property' => 'username',
-                'multiple' => true
-            ))
-            ->getForm();
+        $form = $this->createForm(new WorkorderType(),$workorder);
 
         if ($request->isMethod('POST')) {
             $form->bind($request);
@@ -71,20 +59,7 @@ class CrudController extends Controller
 
         $workorder = $this->getDoctrine()->getManager()->getRepository('SelhosaReparationBundle:DaoWorkOrder')->find($id);
 
-        $form = $this->createFormBuilder($workorder)
-            ->add('reference', 'text')
-            ->add('model', 'text', array(
-                'required' => false
-            ))
-            ->add('priority', 'checkbox', array(
-              'required' => false
-            ))
-            ->add('technicians', 'entity', array(
-                'class' => 'UserBundle:User',
-                'property' => 'username',
-                'multiple' => true
-            ))
-            ->getForm();
+        $form = $this->createForm(new WorkorderType(),$workorder);
 
         if ($request->isMethod('POST')) {
             $form->bind($request);
