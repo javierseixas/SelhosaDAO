@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Selhosa\ReparationBundle\Entity\DaoWorkOrder;
 use Selhosa\ReparationBundle\Entity\WorkOrderStatus;
 use Selhosa\ReparationBundle\Form\Type\WorkorderType;
+use Selhosa\ReparationBundle\Form\Type\Filter\ReparationWorkflowListFilterType;
 
 
 class CrudController extends Controller
@@ -16,13 +17,20 @@ class CrudController extends Controller
 
         // TODO Check if the statusKeyword exists and throw Exception en case does not
 
-        $workorders = $this->getDoctrine()->getManager()->getRepository('SelhosaReparationBundle:DaoWorkOrder')->findByStatus($currentStatus->getId());
+        $filter = $this->createForm(new ReparationWorkflowListFilterType());
+
+        $workorders = $this->get('reparation.workorder.list.filter')
+            ->getResult($filter, $currentStatus->getId());
 
         $buttonsTemplate = $this->get('reparation.workflow.buttons.dumper')->getTemplate($statusKeyword);
 
+        $technicians = $this->getDoctrine()->getManager()->getRepository('UserBundle:User')->findUsersByROLE('ROLE_TECHNICIAN');
+
+
         return $this->render('SelhosaReparationBundle:Crud:index.html.twig', array(
             'workorders' => $workorders,
-            'buttonsTemplate' => $buttonsTemplate
+            'buttonsTemplate' => $buttonsTemplate,
+            'filter' => $filter->createView()
         ));
     }
 
@@ -75,6 +83,15 @@ class CrudController extends Controller
 
         return $this->render('SelhosaReparationBundle:Crud:update.html.twig', array(
             'form' => $form->createView(),
+            'workorder' => $workorder
+        ));
+    }
+
+    public function readAction($id)
+    {
+        $workorder = $this->getDoctrine()->getManager()->getRepository('SelhosaReparationBundle:DaoWorkOrder')->find($id);
+
+        return $this->render('SelhosaReparationBundle:Crud:read.html.twig', array(
             'workorder' => $workorder
         ));
     }

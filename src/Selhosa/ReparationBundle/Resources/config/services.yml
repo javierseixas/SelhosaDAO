@@ -15,3 +15,8 @@ services:
   reparation.workflow.buttons.dumper:
     class: Selhosa\ReparationBundle\Dumper\WorkFlowButtonsDumper
     arguments: [%workflow_buttons_template%]
+
+  reparation.workorder.list.filter:
+    class: Selhosa\ReparationBundle\Filter\ListFilter
+    arguments: [@request,@session,@doctrine.orm.entity_manager,@security.context]
+    scope: request

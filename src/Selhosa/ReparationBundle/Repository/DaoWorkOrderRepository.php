@@ -6,12 +6,16 @@ use Doctrine\ORM\EntityRepository;
 
 class DaoWorkOrderRepository extends EntityRepository
 {
+    /**
+     * @param $statusId
+     * @return array
+     */
     public function findByStatus($statusId)
     {
 
         $qb = $this->_em->createQueryBuilder();
         $qb->select('dwo')
-            ->from('SelhosaReparationBundle:WorkOrder','dwo')
+            ->from('SelhosaReparationBundle:DaoWorkOrder','dwo')
             ->innerJoin('dwo.current_status','wos')
             ->where($qb->expr()->eq('dwo.current_status', ':status_id'))
             ->setParameter('status_id', $statusId);
@@ -20,17 +24,27 @@ class DaoWorkOrderRepository extends EntityRepository
         $query = $qb->getQuery();
 
         return $query->getResult();
+    }
+    /**
+     * @param $statusId
+     * @return array
+     */
+    public function findByStatusAndUser($statusId,$userId)
+    {
 
-        /*
-        $qb = $this->_em->getConnection()->createQueryBuilder();
-        $qb->select('*')
-            ->from('DaoWorkOrder','dwo')
-            ->innerJoin('dwo','WorkOrder','wo', 'dwo.id = wo.id')
-            ->innerJoin('wo','WorkOrderStatus','wos','wo.current_status_id = wos.id')
-            ->where($qb->expr()->eq('wo.current_status_id', ':status_id'))
-            ->setParameter('status_id', $statusId);
+        $qb = $this->_em->createQueryBuilder();
+        $qb->select('dwo')
+            ->from('SelhosaReparationBundle:DaoWorkOrder','dwo')
+            ->innerJoin('dwo.current_status','wos')
+            ->innerJoin('dwo.technicians','u')
+            ->where($qb->expr()->eq('dwo.current_status', ':status_id'))
+            ->andWhere($qb->expr()->eq('u.id',':user_id'))
+            ->setParameter('status_id',$statusId)
+            ->setParameter('user_id',$userId)
         ;
-        return $qb->execute()->fetchAll();
-        */
+
+        $query = $qb->getQuery();
+
+        return $query->getResult();
     }
 }
