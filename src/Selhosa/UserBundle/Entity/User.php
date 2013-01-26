@@ -10,18 +10,24 @@ class User extends BaseUser
 {
     protected $id;
 
+    /**
+     * @var \Doctrine\Common\Collections\ArrayCollection
+     */
+    protected $groups;
+
+    /**
+     * @var \Doctrine\Common\Collections\ArrayCollection
+     */
+    protected $workorders;
+
+
     public function __construct()
     {
         parent::__construct();
 
         $this->workorders = new ArrayCollection();
+        $this->groups = new ArrayCollection();
     }
-
-
-    protected $groups;
-
-
-    protected $workorders;
 
     /**
      * @param \Selhosa\ReparationBundle\Entity\WorkOrder $workorder
@@ -37,7 +43,7 @@ class User extends BaseUser
      */
     public function removeWorkorder(WorkOrder $workorder)
     {
-        $this->clients->removeElement($workorder);
+        $this->workorders->removeElement($workorder);
     }
 
     /**
@@ -46,5 +52,23 @@ class User extends BaseUser
     public function getWorkorders()
     {
         return $this->workorders;
+    }
+
+    /**
+     * @param Group $group
+     * @return void
+     */
+    public function addGroups(Group $group)
+    {
+        if (!$this->groups->contains($group))
+            $this->groups->add($group);
+    }
+
+    /**
+     * @return \Doctrine\Common\Collections\ArrayCollection
+     */
+    public function getGroups()
+    {
+        return $this->groups;
     }
 }

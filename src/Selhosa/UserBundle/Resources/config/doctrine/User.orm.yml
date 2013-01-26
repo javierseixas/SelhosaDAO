@@ -1,6 +1,7 @@
 Selhosa\UserBundle\Entity\User:
     type: entity
     table: User
+    repositoryClass: Selhosa\UserBundle\Repository\UserRepository
     fields:
         id:
             type: integer
