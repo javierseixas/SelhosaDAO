@@ -11,13 +11,15 @@ class WorkorderType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('reference', 'text')
-            ->add('model', 'text', array(
-            ))
+            ->add('reference', 'text', array('label' => 'Referència'))
+            ->add('model', 'text')
+            ->add('serialNumber', 'text', array('label' => 'Número de serie'))
             ->add('priority', 'checkbox', array(
-                'required' => false
+                'required' => false,
+                'label' => 'Reparació prioritària'
             ))
             ->add('technicians', 'entity', array(
+                'label' => 'Tècnic',
                 'class' => 'UserBundle:User',
                 'property' => 'username',
                 'multiple' => true,

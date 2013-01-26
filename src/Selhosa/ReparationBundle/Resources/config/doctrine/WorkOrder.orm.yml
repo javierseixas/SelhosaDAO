@@ -24,6 +24,10 @@ Selhosa\ReparationBundle\Entity\WorkOrder:
             length: '50'
         priority:
             type: boolean
+        serialNumber:
+            type: string
+            length: '40'
+            column: serial_number
         createdAt:
             type: datetime
             nullable: false

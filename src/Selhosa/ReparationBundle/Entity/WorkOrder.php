@@ -50,6 +50,11 @@ class WorkOrder
      */
     private $current_status;
 
+    /**
+     * @var string
+     */
+    protected $serialNumber;
+
 
     public function __construct()
     {
@@ -197,6 +202,22 @@ class WorkOrder
     public function getTechnicians()
     {
         return $this->technicians;
+    }
+
+    /**
+     * @param string $serialNumber
+     */
+    public function setSerialNumber($serialNumber)
+    {
+        $this->serialNumber = $serialNumber;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSerialNumber()
+    {
+        return $this->serialNumber;
     }
 
 
