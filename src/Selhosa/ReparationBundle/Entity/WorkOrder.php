@@ -110,7 +110,7 @@ class WorkOrder
      */
     public function setModel($model)
     {
-        $this->model = $model;
+        $this->model = preg_replace("/[^A-Za-z0-9 ]/", '', $model);
     
         return $this;
     }

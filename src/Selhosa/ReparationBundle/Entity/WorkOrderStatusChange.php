@@ -76,6 +76,8 @@ class WorkOrderStatusChange
     public function setWorkorder($workorder)
     {
         $this->workorder = $workorder;
+
+        return $this;
     }
 
     /**
@@ -85,6 +87,61 @@ class WorkOrderStatusChange
     {
         return $this->workorder;
     }
+
+    /**
+     * @param \Selhosa\ReparationBundle\Entity\WorkOrderStatus $newStatus
+     */
+    public function setNewStatus($newStatus)
+    {
+        $this->newStatus = $newStatus;
+
+        return $this;
+    }
+
+    /**
+     * @return \Selhosa\ReparationBundle\Entity\WorkOrderStatus
+     */
+    public function getNewStatus()
+    {
+        return $this->newStatus;
+    }
+
+    /**
+     * @param \Selhosa\ReparationBundle\Entity\WorkOrderStatus $previousStatus
+     */
+    public function setPreviousStatus($previousStatus)
+    {
+        $this->previousStatus = $previousStatus;
+
+        return $this;
+    }
+
+    /**
+     * @return \Selhosa\ReparationBundle\Entity\WorkOrderStatus
+     */
+    public function getPreviousStatus()
+    {
+        return $this->previousStatus;
+    }
+
+    /**
+     * @param \Selhosa\UserBundle\Entity\User $user
+     */
+    public function setUser($user)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * @return \Selhosa\UserBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
 
 
 }
