@@ -1,0 +1,43 @@
+Selhosa\ReparationBundle\Entity\WorkOrderStatusChange:
+    type: entity
+    table: WorkOrder_Status_Changes
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        createdAt:
+            type: datetime
+            nullable: false
+            column: created_at
+            gedmo:
+                timestampable:
+                  on: create
+    manyToOne:
+        workorder:
+            targetEntity: WorkOrder
+            inversedBy: statusChanges
+            joinColumn:
+                name: workorder_id
+                referencedColumnName: id
+                nullable: false
+        previousStatus:
+            targetEntity: WorkOrderStatus
+            joinColumn:
+                name: previous_status_id
+                referencedColumnName: id
+                nullable: true
+        newStatus:
+            targetEntity: WorkOrderStatus
+            joinColumn:
+                name: new_status_id
+                referencedColumnName: id
+                nullable: false
+        user:
+            targetEntity: Selhosa\UserBundle\Entity\User
+            joinColumn:
+                name: user_id
+                referencedColumnName: id
+                nullable: false
+    lifecycleCallbacks: {  }

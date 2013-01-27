@@ -40,6 +40,10 @@ Selhosa\ReparationBundle\Entity\WorkOrder:
             targetEntity: Note
             mappedBy: workorder
             cascade: ["all"]
+        statusChanges:
+            targetEntity: WorkOrderStatusChange
+            mappedBy: workorder
+            cascade: ['all']
     manyToOne:
         current_status:
             targetEntity: WorkOrderStatus

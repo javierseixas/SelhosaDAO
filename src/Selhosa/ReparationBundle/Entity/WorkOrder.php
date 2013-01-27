@@ -51,6 +51,11 @@ class WorkOrder
     private $current_status;
 
     /**
+     * @var \Doctrine\Common\Collections\ArrayCollection
+     */
+    protected $statusChanges;
+
+    /**
      * @var string
      */
     protected $serialNumber;
@@ -60,6 +65,7 @@ class WorkOrder
     {
         $this->notes = new ArrayCollection();
         $this->technicians = new ArrayCollection();
+        $this->statusChanges = new ArrayCollection();
     }
 
 
@@ -184,16 +190,16 @@ class WorkOrder
      */
     public function addTechnician(User $technician)
     {
-        if (!$this->workorders->contains($technician))
-            $this->workorders->add($technician);
+        if (!$this->technicians->contains($technician))
+            $this->technicians->add($technician);
     }
 
     /**
      * @param WorkOrder $technician
      */
-    public function removeTechnician(WorkOrder $technician)
+    public function removeTechnician(User $technician)
     {
-        $this->clients->removeElement($technician);
+        $this->technicians->removeElement($technician);
     }
 
     /**
@@ -218,6 +224,31 @@ class WorkOrder
     public function getSerialNumber()
     {
         return $this->serialNumber;
+    }
+
+    /**
+     * @param WorkOrderStatusChange $statusChange
+     */
+    public function addStatusChange(WorkOrderStatusChange $statusChange)
+    {
+        if (!$this->statusChanges->contains($statusChange))
+            $this->statusChanges->add($statusChange);
+    }
+
+    /**
+     * @param WorkOrderStatusChange $statusChange
+     */
+    public function removeStatusChange(WorkOrderStatusChange $statusChange)
+    {
+        $this->statusChanges->removeElement($statusChange);
+    }
+
+    /**
+     * @return \Doctrine\Common\Collections\ArrayCollection
+     */
+    public function getStatusChanges()
+    {
+        return $this->statusChanges;
     }
 
 
