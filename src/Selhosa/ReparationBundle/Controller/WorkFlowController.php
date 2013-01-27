@@ -18,7 +18,7 @@ class WorkFlowController extends Controller
         $id = (int)$request->get('workorderid');
         $workorder = $this->getDoctrine()->getManager()->getRepository('SelhosaReparationBundle:WorkOrder')->find($id);
 
-        $manager = new WorkOrderStatusManager($workorder, $this->getDoctrine()->getManager());
+        $manager = new WorkOrderStatusManager($workorder, $this->getDoctrine()->getManager(), $this->get('security.context')->getToken()->getUser());
 
         $newStatusKeyword = $request->get('newstatuskeyword');
 

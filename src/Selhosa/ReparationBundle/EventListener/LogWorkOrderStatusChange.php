@@ -38,6 +38,11 @@ class LogWorkOrderStatusChange
         }
     }
 
+    /**
+     * NOT IN USE: I din't achieve it works. It didn't persist the new StatusChange.
+     *
+     * @param \Doctrine\ORM\Event\PreUpdateEventArgs $args
+     */
     public function preUpdate(PreUpdateEventArgs $args)
     {
         $entity = $args->getEntity();

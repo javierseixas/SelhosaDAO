@@ -4,6 +4,8 @@ namespace Selhosa\ReparationBundle\Manager;
 
 use Selhosa\ReparationBundle\Entity\WorkOrder;
 use Doctrine\ORM\EntityManager;
+use Selhosa\UserBundle\Entity\User;
+use Selhosa\ReparationBundle\Entity\WorkOrderStatusChange;
 
 class WorkOrderStatusManager
 {
@@ -18,13 +20,20 @@ class WorkOrderStatusManager
     protected $em;
 
     /**
+     * @var \Selhosa\UserBundle\Entity\User
+     */
+    protected $currentUser;
+
+    /**
      * @param \Selhosa\ReparationBundle\Entity\WorkOrder $workorder
      * @param \Doctrine\ORM\EntityManager $em
+     * @param \Selhosa\UserBundle\Entity\User $currentUser
      */
-    function __construct(WorkOrder $workorder, EntityManager $em)
+    function __construct(WorkOrder $workorder, EntityManager $em, User $user)
     {
         $this->workorder = $workorder;
         $this->em = $em;
+        $this->currentUser = $user;
     }
 
     public function diagnoseToOrderMaterial()
@@ -79,7 +88,16 @@ class WorkOrderStatusManager
     protected function changeWorkOrderStatus($statusKeyword)
     {
         $newStatus = $this->em->getRepository('SelhosaReparationBundle:WorkOrderStatus')->findOneByKeyword($statusKeyword);
+        $statusChange = new WorkOrderStatusChange();
+        $statusChange
+            ->setWorkorder($this->workorder)
+            ->setPreviousStatus($this->workorder->getCurrentStatus())
+            ->setNewStatus($newStatus)
+            ->setUser($this->currentUser)
+        ;
         $this->workorder->setCurrentStatus($newStatus);
+        $this->workorder->addStatusChange($statusChange);
+
         $this->em->persist($this->workorder);
         $this->em->flush();
     }
