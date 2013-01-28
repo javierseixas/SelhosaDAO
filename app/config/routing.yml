@@ -1,6 +1,6 @@
 selhosa_reparation:
     resource: "@SelhosaReparationBundle/Resources/config/routing.yml"
-    prefix:   /dao
+    prefix:   /doa
 
 user_bundle:
     resource: "@UserBundle/Resources/config/routing.yml"
