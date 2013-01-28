@@ -10,6 +10,9 @@ Selhosa\ReparationBundle\Entity\WorkOrder:
         workorder: Selhosa\ReparationBundle\Entity\WorkOrder
         daoworkorder: Selhosa\ReparationBundle\Entity\DaoWorkOrder
     repositoryClass: Selhosa\ReparationBundle\Repository\WorkOrderRepository
+    indexes:
+        reference_IDX_1:
+          columns: [ reference ]
     fields:
         id:
             type: integer
