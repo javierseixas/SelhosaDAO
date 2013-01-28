@@ -97,8 +97,13 @@ class ListFilter
                 $this->session->set($filter->getName(), array('technicians' => $selectedTechnician->getId()));
 
             } else {
-                if ($this->session->has($filter->getName().'/technicians')) {
-                    $this->session->remove($filter->getName().'/technicians');
+                if ($this->session->has($filter->getName())) {
+
+                    $filterData = $this->session->get($filter->getName());
+
+                    if (isset($filterData['technicians']) && !empty($filterData['technicians'])) {
+                        $this->session->set($filter->getName(), array('technicians' => null));
+                    }
                 }
             }
 
@@ -120,6 +125,10 @@ class ListFilter
         return $qb;
     }
 
+    /**
+     * @param \Symfony\Component\Form\FormInterface $form
+     * @return \Symfony\Component\Form\FormInterface
+     */
     protected function bindSessionInForm(FormInterface $form)
     {
         $form_values_in_session = $this->session->get($form->getName());

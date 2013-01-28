@@ -24,18 +24,20 @@ class CrudController extends Controller
 
         $buttonsTemplate = $this->get('reparation.workflow.buttons.dumper')->getTemplate($statusKeyword);
 
-        $technicians = $this->getDoctrine()->getManager()->getRepository('UserBundle:User')->findUsersByROLE('ROLE_TECHNICIAN');
-
-
         return $this->render('SelhosaReparationBundle:Crud:index.html.twig', array(
             'workorders' => $workorders,
             'buttonsTemplate' => $buttonsTemplate,
-            'filter' => $filter->createView()
+            'filter' => $filter->createView(),
+            'currentStatus' => $currentStatus
         ));
     }
 
     public function createAction()
     {
+        if (false === $this->get('security.context')->isGranted('ROLE_MANAGER')) {
+            throw new AccessDeniedException();
+        }
+
         $request = $this->getRequest();
 
         $workorder = new DaoWorkOrder();
@@ -63,6 +65,10 @@ class CrudController extends Controller
 
     public function updateAction($id)
     {
+        if (false === $this->get('security.context')->isGranted('ROLE_MANAGER')) {
+            throw new AccessDeniedException();
+        }
+
         $request = $this->getRequest();
 
         $workorder = $this->getDoctrine()->getManager()->getRepository('SelhosaReparationBundle:DaoWorkOrder')->find($id);
