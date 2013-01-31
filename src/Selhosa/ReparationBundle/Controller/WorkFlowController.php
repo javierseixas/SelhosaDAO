@@ -3,7 +3,7 @@
 namespace Selhosa\ReparationBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Selhosa\ReparationBundle\Entity\DaoWorkOrder;
+use Selhosa\ReparationBundle\Entity\DoaWorkOrder;
 use Selhosa\ReparationBundle\Entity\WorkOrderStatus;
 use Selhosa\ReparationBundle\Manager\WorkOrderStatusManager;
 use Symfony\Component\HttpFoundation\JsonResponse;

@@ -1,0 +1,6 @@
+Selhosa\ReparationBundle\Entity\DoaWorkOrder:
+    type: entity
+    table: DoaWorkOrder
+    repositoryClass: Selhosa\ReparationBundle\Repository\DoaWorkOrderRepository
+    fields:
+    lifecycleCallbacks: {  }

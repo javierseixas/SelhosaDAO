@@ -3,7 +3,7 @@ $(document).ready(function () {
     var changeStatus = function(workorder,newstatuskeyword) {
         $.ajax({
             type: "GET",
-            url: "/dao/ajax/canviar-estat-ot",
+            url: "/doa/ajax/canviar-estat-ot",
             data: {
                 'workorderid': workorder,
                 'newstatuskeyword': newstatuskeyword

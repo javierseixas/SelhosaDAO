@@ -3,7 +3,7 @@
 namespace Selhosa\ReparationBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Selhosa\ReparationBundle\Entity\DaoWorkOrder;
+use Selhosa\ReparationBundle\Entity\DoaWorkOrder;
 use Selhosa\ReparationBundle\Entity\WorkOrderStatus;
 use Selhosa\ReparationBundle\Form\Type\WorkorderType;
 use Selhosa\ReparationBundle\Form\Type\Filter\ReparationWorkflowListFilterType;
@@ -40,7 +40,7 @@ class CrudController extends Controller
 
         $request = $this->getRequest();
 
-        $workorder = new DaoWorkOrder();
+        $workorder = new DoaWorkOrder();
         $status = $this->getDoctrine()->getManager()->getRepository('SelhosaReparationBundle:WorkOrderStatus')->find(10);
         $workorder->setCurrentStatus($status);
 
@@ -71,7 +71,7 @@ class CrudController extends Controller
 
         $request = $this->getRequest();
 
-        $workorder = $this->getDoctrine()->getManager()->getRepository('SelhosaReparationBundle:DaoWorkOrder')->find($id);
+        $workorder = $this->getDoctrine()->getManager()->getRepository('SelhosaReparationBundle:DoaWorkOrder')->find($id);
 
         $form = $this->createForm(new WorkorderType(),$workorder);
 
@@ -95,7 +95,7 @@ class CrudController extends Controller
 
     public function readAction($id)
     {
-        $workorder = $this->getDoctrine()->getManager()->getRepository('SelhosaReparationBundle:DaoWorkOrder')->find($id);
+        $workorder = $this->getDoctrine()->getManager()->getRepository('SelhosaReparationBundle:DoaWorkOrder')->find($id);
 
         return $this->render('SelhosaReparationBundle:Crud:read.html.twig', array(
             'workorder' => $workorder

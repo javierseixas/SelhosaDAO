@@ -8,7 +8,7 @@ Selhosa\ReparationBundle\Entity\WorkOrder:
         length: null
     discriminatorMap:
         workorder: Selhosa\ReparationBundle\Entity\WorkOrder
-        daoworkorder: Selhosa\ReparationBundle\Entity\DaoWorkOrder
+        doaworkorder: Selhosa\ReparationBundle\Entity\DoaWorkOrder
     repositoryClass: Selhosa\ReparationBundle\Repository\WorkOrderRepository
     indexes:
         reference_IDX_1:

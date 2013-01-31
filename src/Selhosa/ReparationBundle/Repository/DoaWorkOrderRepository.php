@@ -4,7 +4,7 @@ namespace Selhosa\ReparationBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
 
-class DaoWorkOrderRepository extends EntityRepository
+class DoaWorkOrderRepository extends EntityRepository
 {
     /**
      * @param $statusId
@@ -15,7 +15,7 @@ class DaoWorkOrderRepository extends EntityRepository
 
         $qb = $this->_em->createQueryBuilder();
         $qb->select('dwo')
-            ->from('SelhosaReparationBundle:DaoWorkOrder','dwo')
+            ->from('SelhosaReparationBundle:DoaWorkOrder','dwo')
             ->innerJoin('dwo.current_status','wos')
             ->where($qb->expr()->eq('dwo.current_status', ':status_id'))
             ->setParameter('status_id', $statusId);
@@ -34,7 +34,7 @@ class DaoWorkOrderRepository extends EntityRepository
 
         $qb = $this->_em->createQueryBuilder();
         $qb->select('dwo')
-            ->from('SelhosaReparationBundle:DaoWorkOrder','dwo')
+            ->from('SelhosaReparationBundle:DoaWorkOrder','dwo')
             ->innerJoin('dwo.current_status','wos')
             ->innerJoin('dwo.technicians','u')
             ->where($qb->expr()->eq('dwo.current_status', ':status_id'))

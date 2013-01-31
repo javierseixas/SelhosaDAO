@@ -5,7 +5,7 @@ namespace Selhosa\ReparationBundle\Entity;
 /**
  * WorkOrder
  */
-class DaoWorkOrder extends WorkOrder
+class DoaWorkOrder extends WorkOrder
 {
     /**
      * @var integer
