@@ -15,34 +15,27 @@
             {% block navbar %}
                 <div class="navbar">
                     <div class="navbar-inner">
-                        <div class="container">
-                            <a data-target=".navbar-responsive-collapse" data-toggle="collapse" class="btn btn-navbar collapsed">
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </a>
-                            <a href="#" class="brand">Selhosa.DAO</a>
-                            <div class="nav-collapse navbar-responsive-collapse collapse" style="height: 0px;">
-                                <ul class="nav">
-                                    <li class="dropdown">
-                                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">Ordres de treball <b class="caret"></b></a>
-                                        <ul class="dropdown-menu">
-                                            <li><a href="{{ path('selhosa_reparation_create') }}">Nova OT</a></li>
-                                            <li class="divider"></li>
-                                            <li><a href="{{ path('selhosa_reparation_list', {statusKeyword : 'diagnose'}) }}">Mirar</a></li>
-                                            <li><a href="{{ path('selhosa_reparation_list', {statusKeyword : 'orderMaterial'}) }}">Demanar material</a></li>
-                                            <li><a href="{{ path('selhosa_reparation_list', {statusKeyword : 'receiveMaterial'}) }}">Rebre material</a></li>
-                                            <li><a href="{{ path('selhosa_reparation_list', {statusKeyword : 'repair'}) }}">Reparar (Material rebut)</a></li>
-                                            <li><a href="{{ path('selhosa_reparation_list', {statusKeyword : 'close'}) }}">Tancar (Finalitzades)</a></li>
-                                        </ul>
-                                    </li>
+                        <a class="brand" href="{{ path('selhosa_reparation_homepage') }}">Selhosa.DOA</a>
+                        <ul class="nav">
+                            <li class="dropdown active">
+                                <a data-toggle="dropdown" class="dropdown-toggle" href="#">Ordres de treball <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="{{ path('selhosa_reparation_create') }}">Nova OT</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="{{ path('selhosa_reparation_list', {statusKeyword : 'diagnose'}) }}">Mirar</a></li>
+                                    <li><a href="{{ path('selhosa_reparation_list', {statusKeyword : 'orderMaterial'}) }}">Demanar material</a></li>
+                                    <li><a href="{{ path('selhosa_reparation_list', {statusKeyword : 'receiveMaterial'}) }}">Rebre material</a></li>
+                                    <li><a href="{{ path('selhosa_reparation_list', {statusKeyword : 'repair'}) }}">Reparar (Material rebut)</a></li>
+                                    <li><a href="{{ path('selhosa_reparation_list', {statusKeyword : 'close'}) }}">Tancar (Finalitzades)</a></li>
                                 </ul>
-                                <form action="" class="navbar-search pull-left">
-                                    <input type="text" placeholder="Search" class="search-query span2">
-                                </form>
-                            </div><!-- /.nav-collapse -->
-                        </div>
-                    </div><!-- /navbar-inner -->
+                            </li>
+                        </ul>
+                        {#
+                        <form action="" class="navbar-search pull-left">
+                            <input type="text" placeholder="Search" class="search-query span2">
+                        </form>
+                        #}
+                    </div>
                 </div>
             {% endblock navbar %}
 
@@ -78,7 +71,7 @@
             <script type="text/javascript" src="{{ asset_url }}"></script>
             {% endjavascripts %}
             {% block java %}
-                {% endblock java %}
+            {% endblock java %}
 
         {% endblock foot_script %}
     </body>
