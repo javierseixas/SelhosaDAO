@@ -20,9 +20,11 @@
                             <li class="dropdown active">
                                 <a data-toggle="dropdown" class="dropdown-toggle" href="#">Ordres de treball <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="{{ path('selhosa_reparation_create') }}">Nova OT</a></li>
-                                    <li class="divider"></li>
-                                    <li><a href="{{ path('selhosa_reparation_list', {statusKeyword : 'diagnose'}) }}">Mirar</a></li>
+                                    {% if is_granted('ROLE_MANAGER') %}
+                                        <li><a href="{{ path('selhosa_reparation_create') }}">Nova OT</a></li>
+                                        <li class="divider"></li>
+                                    {% endif %}
+                                    <li><a href="{{ path('selhosa_reparation_list', {statusKeyword : 'diagnose'}) }}">Diagnosticar</a></li>
                                     <li><a href="{{ path('selhosa_reparation_list', {statusKeyword : 'orderMaterial'}) }}">Demanar material</a></li>
                                     <li><a href="{{ path('selhosa_reparation_list', {statusKeyword : 'receiveMaterial'}) }}">Rebre material</a></li>
                                     <li><a href="{{ path('selhosa_reparation_list', {statusKeyword : 'repair'}) }}">Reparar (Material rebut)</a></li>
