@@ -25,6 +25,7 @@ class AppKernel extends Kernel
             new FOS\UserBundle\FOSUserBundle(),
             new Selhosa\UserBundle\UserBundle(),
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
+            new Selhosa\ElectronicBundle\SelhosaElectronicBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

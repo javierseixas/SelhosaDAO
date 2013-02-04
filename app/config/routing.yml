@@ -1,3 +1,7 @@
+selhosa_electronic:
+    resource: "@SelhosaElectronicBundle/Resources/config/routing.yml"
+    prefix:   /
+
 selhosa_reparation:
     resource: "@SelhosaReparationBundle/Resources/config/routing.yml"
     prefix:   /doa

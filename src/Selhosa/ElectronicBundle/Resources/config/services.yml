@@ -1,0 +1,7 @@
+parameters:
+#    selhosa_electronic.example.class: Selhosa\ElectronicBundle\Example
+
+services:
+#    selhosa_electronic.example:
+#        class: %selhosa_electronic.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

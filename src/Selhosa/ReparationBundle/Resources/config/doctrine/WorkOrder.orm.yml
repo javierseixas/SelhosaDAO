@@ -55,6 +55,13 @@ Selhosa\ReparationBundle\Entity\WorkOrder:
                 name: current_status_id
                 referencedColumnName: id
                 nullable: false
+        electronic:
+            targetEntity: Electronic
+            inversedBy: workorders
+            joinColumn:
+                name: electronic_id
+                referencedColumnName: id
+                nullable: true
     manyToMany:
       technicians:
         targetEntity: Selhosa\UserBundle\Entity\User

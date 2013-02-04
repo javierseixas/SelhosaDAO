@@ -1,0 +1,30 @@
+Selhosa\ElectronicBundle\Entity\Electronic:
+    type: entity
+    table: Electronic
+    indexes:
+        reference_IDX_1:
+          columns: [ model ]
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        model:
+            type: string
+            length: '40'
+            column: model
+    oneToMany:
+        workorders:
+            targetEntity: Selhosa\ReparationBundle\Entity\WorkOrder
+            mappedBy: electronic
+            cascade: ["all"]
+    manyToOne:
+        brandFamily:
+            targetEntity: BrandFamily
+            inversedBy: electronics
+            joinColumn:
+                name: brand_family_id
+                referencedColumnName: id
+                nullable: false
+    lifecycleCallbacks: {  }
