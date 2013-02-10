@@ -1,0 +1,7 @@
+parameters:
+#    selhosa_work.example.class: Selhosa\WorkBundle\Example
+
+services:
+#    selhosa_work.example:
+#        class: %selhosa_work.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

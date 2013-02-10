@@ -1,0 +1,24 @@
+parameters:
+  workflow_buttons_template:
+    diagnose: flow_buttons_diagnose.html.twig
+    orderMaterial: flow_buttons_orderMaterial.html.twig
+    receiveMaterial: flow_buttons_receiveMaterial.html.twig
+    repair: flow_buttons_repair.html.twig
+    close: flow_buttons_close.html.twig
+    closed: flow_buttons_closed.html.twig
+
+services:
+  reparation.workflow.buttons.dumper:
+    class: Selhosa\WorkBundle\Dumper\WorkflowButtonsDumper
+    arguments: [%workflow_buttons_template%]
+
+  reparation.workorder.list.filter:
+    class: Selhosa\RepairBundle\Filter\ListFilter
+    arguments: [@request,@session,@doctrine.orm.entity_manager,@security.context]
+    scope: request
+
+  reparation.workorder.status_change.listener:
+    class: Selhosa\RepairBundle\EventListener\LogWorkOrderStatusChange
+    arguments: ['@service_container']
+    tags:
+      - { name: doctrine.event_listener, event: prePersist }

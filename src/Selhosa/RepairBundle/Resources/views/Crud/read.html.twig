@@ -1,0 +1,64 @@
+{% extends "::base.html.twig" %}
+
+{% block container %}
+
+    <div class="row-fluid">
+        <div class="span6"><h2>Detall OT</h2></div>
+    </div>
+
+	<div class="row-fluid">
+
+        <table class="table table-bordered">
+            <tbody>
+                <tr>
+                    <td class="span2">Referència</td>
+                    <td>{{ workorder.reference }}</td>
+                </tr>
+                <tr>
+                    <td>Model</td>
+                    <td>{{ workorder.model }}</td>
+                </tr>
+                <tr>
+                    <td>Prioritat</td>
+                    <td>{{ workorder.priority }}</td>
+                </tr>
+                <tr>
+                    <td>Tècnic(s)</td>
+                    <td>
+                        <ul>
+                        {% for technician in workorder.technicians %}
+                            <li>{{ technician }}</li>
+                        {% endfor %}
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Historial</h3>
+
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Situació Prèvia</th>
+                    <th>Situació Nova</th>
+                    <th>Usuari</th>
+                    <th>Data i hora</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for statusChange in workorder.statusChanges %}
+                <tr>
+                    <td>{% if statusChange.previousStatus is not null %}{{ statusChange.previousStatus.description }}{% endif %}</td>
+                    <td>{{ statusChange.newStatus.description }}</td>
+                    <td>{{ statusChange.user.username }}</td>
+                    <td>{{ statusChange.createdAt | date('d/m/Y H:i:s') }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+
+        </table>
+
+
+	</div>
+{% endblock container %}

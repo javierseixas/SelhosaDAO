@@ -1,0 +1,29 @@
+Selhosa\ElectronicBundle\Entity\ElectronicCategory:
+    type: entity
+    table: ElectronicCategory
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        code:
+            type: string
+            length: '40'
+        description:
+            type: string
+            length: '255'
+    oneToMany:
+        electroncis:
+            targetEntity: Electronic
+            mappedBy: category
+            cascade: ["all"]
+    manyToOne:
+        brand:
+            targetEntity: Brand
+            inversedBy: electronicCategories
+            joinColumn:
+                name: brand_id
+                referencedColumnName: id
+                nullable: false
+    lifecycleCallbacks: {  }

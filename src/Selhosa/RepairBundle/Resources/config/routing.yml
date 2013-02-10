@@ -1,0 +1,15 @@
+selhosa_reparation_homepage:
+    pattern:  /
+    defaults: { _controller: SelhosaRepairBundle:Crud:index }
+selhosa_reparation_list:
+    pattern:  /ordres-treball/{statusKeyword}
+    defaults: { _controller: SelhosaRepairBundle:Crud:index }
+selhosa_reparation_create:
+    pattern:  /entrar-ot
+    defaults: { _controller: SelhosaRepairBundle:Crud:create }
+selhosa_reparation_update:
+    pattern:  /editar-ot/{id}
+    defaults: { _controller: SelhosaRepairBundle:Crud:update }
+selhosa_reparation_read:
+    pattern:  /veure-ot/{id}
+    defaults: { _controller: SelhosaRepairBundle:Crud:read }

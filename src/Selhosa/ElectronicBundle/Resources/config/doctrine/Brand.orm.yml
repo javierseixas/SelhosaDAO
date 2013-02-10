@@ -1,0 +1,18 @@
+Selhosa\ElectronicBundle\Entity\Brand:
+    type: entity
+    table: Brand
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        name:
+            type: string
+            length: '40'
+    oneToMany:
+        electronicCategories:
+            targetEntity: Selhosa\ElectronicBundle\Entity\ElectronicCategory
+            mappedBy: brand
+            cascade: ["all"]
+    lifecycleCallbacks: {  }

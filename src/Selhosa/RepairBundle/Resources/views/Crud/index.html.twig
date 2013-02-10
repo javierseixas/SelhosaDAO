@@ -1,0 +1,81 @@
+{% extends "::base.html.twig" %}
+
+{% block extra_javascripts %}
+<script src="{{ asset('bundles/selhosarepair/js/workflow.js') }}" ></script>
+{% endblock extra_javascripts %}
+
+{% block container %}
+
+    <div class="row-fluid">
+        <div class="span6"><h2>Ordres de treball: {{ currentStatus.description }}</h2></div>
+        {% if is_granted('ROLE_MANAGER') %}
+            <div class="span2 pull-right"><a href="{{ path('selhosa_reparation_create') }}" class="btn btn-large btn-primary">Nova OT</a></div>
+        {% endif %}
+    </div>
+
+    {% if is_granted('ROLE_MANAGER') %}
+    <div class="row-fluid">
+        <div class="12">
+            <form method="post" class="form-inline">
+                <fieldset>
+                    <legend>Filtre</legend>
+                        {{ form_widget(filter) }}
+                    <button type="submit" class="btn">Filtrar</button>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+    {% endif %}
+
+	<div class="row-fluid">
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>OT</th>
+                    <th>Entrada</th>
+                    <th></th>
+                    <th>Tècnic</th>
+                    <th>Accions</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for workorder in workorders %}
+                <tr id="workorder-{{ workorder.id }}">
+                    <td>{{ workorder.reference }}</td>
+                    <td>{{ workorder.createdAt | date('d/m/Y') }}</td>
+                    <td>
+                        {% if workorder.priority %}
+                            <img src="{{ asset('bundles/selhosarepair/images/legend/priority.png') }}" alt="Prioritària" title="Aquesta OT és prioritària" />
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% for technician in workorder.technicians %}
+                            {{ technician.username }}
+                        {% endfor %}
+                    </td>
+                    <td>
+                        {% include 'SelhosaRepairBundle:WorkflowButtons:' ~ buttonsTemplate %}
+                    </td>
+                    <td>
+                        <div class="btn-group">
+                            <button data-toggle="dropdown" class="btn dropdown-toggle">Action <span class="caret"></span></button>
+                            <ul class="dropdown-menu">
+                                {% if is_granted('ROLE_MANAGER') %}
+                                    <li><a href="{{ path('selhosa_reparation_update', {'id' : workorder.id}) }}">Editar</a></li>
+                                {% endif %}
+                                <li><a href="{{ path('selhosa_reparation_read', {'id' : workorder.id}) }}">Veure fitxa</a></li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="5"></td>
+                </tr>
+            </tfoot>
+        </table>
+	</div>
+{% endblock container %}

@@ -3,7 +3,7 @@
 namespace Selhosa\UserBundle\Entity;
 
 use FOS\UserBundle\Entity\User as BaseUser;
-use Selhosa\ReparationBundle\Entity\WorkOrder;
+use Selhosa\WorkBundle\Entity\WorkOrder;
 use Doctrine\Common\Collections\ArrayCollection;
 
 class User extends BaseUser
@@ -30,7 +30,7 @@ class User extends BaseUser
     }
 
     /**
-     * @param \Selhosa\ReparationBundle\Entity\WorkOrder $workorder
+     * @param \Selhosa\WorkBundle\Entity\WorkOrder $workorder
      */
     public function addWorkorders(WorkOrder $workorder)
     {
@@ -39,7 +39,7 @@ class User extends BaseUser
     }
 
     /**
-     * @param \Selhosa\ReparationBundle\Entity\WorkOrder $workorder
+     * @param \Selhosa\WorkBundle\Entity\WorkOrder $workorder
      */
     public function removeWorkorder(WorkOrder $workorder)
     {

@@ -16,7 +16,7 @@ estudiar los envios de los vaio, cómo hacerlo a nivel de flujo de trabajo y en 
 
 ESTRUCTURA EN SYMFONY
 
-/src/Selhosa/ReparationBundle
+/src/Selhosa/RepairBundle
 
 
 

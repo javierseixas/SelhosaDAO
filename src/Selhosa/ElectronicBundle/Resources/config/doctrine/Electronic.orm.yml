@@ -15,16 +15,16 @@ Selhosa\ElectronicBundle\Entity\Electronic:
             length: '40'
             column: model
     oneToMany:
-        workorders:
-            targetEntity: Selhosa\ReparationBundle\Entity\WorkOrder
+        repairs:
+            targetEntity: Selhosa\RepairBundle\Entity\Repair
             mappedBy: electronic
             cascade: ["all"]
     manyToOne:
-        brandFamily:
-            targetEntity: BrandFamily
+        category:
+            targetEntity: ElectronicCategory
             inversedBy: electronics
             joinColumn:
-                name: brand_family_id
+                name: electronic_category_id
                 referencedColumnName: id
-                nullable: false
+                nullable: true
     lifecycleCallbacks: {  }

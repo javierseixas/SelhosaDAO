@@ -1,10 +1,14 @@
+selhosa_work:
+    resource: "@SelhosaWorkBundle/Resources/config/routing.yml"
+    prefix:   /aplicatiu
+
 selhosa_electronic:
     resource: "@SelhosaElectronicBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /aplicatiu
 
 selhosa_reparation:
-    resource: "@SelhosaReparationBundle/Resources/config/routing.yml"
-    prefix:   /doa
+    resource: "@SelhosaRepairBundle/Resources/config/routing.yml"
+    prefix:   /aplicatiu/reparacions
 
 user_bundle:
     resource: "@UserBundle/Resources/config/routing.yml"

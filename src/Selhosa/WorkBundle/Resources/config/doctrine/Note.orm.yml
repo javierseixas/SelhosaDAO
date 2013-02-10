@@ -1,0 +1,22 @@
+Selhosa\WorkBundle\Entity\Note:
+    type: entity
+    table: Note
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        created_at:
+            type: datetime
+        comment:
+            type: text
+    manyToOne:
+        workorder:
+            targetEntity: WorkOrder
+            inversedBy: notes
+            joinColumn:
+                name: workorder_id
+                referencedColumnName: id
+                nullable: false
+    lifecycleCallbacks: {  }

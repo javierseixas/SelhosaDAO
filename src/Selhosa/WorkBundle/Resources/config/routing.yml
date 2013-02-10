@@ -1,0 +1,3 @@
+selhosa_work_change_status:
+    pattern:  /ajax/canviar-estat-ot
+    defaults: { _controller: SelhosaWorkBundle:Workflow:changeStatus }

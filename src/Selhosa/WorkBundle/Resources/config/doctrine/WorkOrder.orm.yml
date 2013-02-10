@@ -1,0 +1,71 @@
+Selhosa\WorkBundle\Entity\WorkOrder:
+    type: entity
+    table: WorkOrder
+    inheritanceType: JOINED
+    discriminatorColumn:
+        name: workorder_type
+        type: string
+        length: null
+    discriminatorMap:
+        workorder: Selhosa\WorkBundle\Entity\WorkOrder
+        repair: Selhosa\RepairBundle\Entity\Repair
+    repositoryClass: Selhosa\WorkBundle\Repository\WorkOrderRepository
+    indexes:
+        reference_IDX_1:
+          columns: [ reference ]
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        reference:
+            type: string
+            length: '20'
+        model:
+            type: string
+            length: '50'
+        priority:
+            type: boolean
+        serialNumber:
+            type: string
+            length: '40'
+            column: serial_number
+        createdAt:
+            type: datetime
+            nullable: false
+            column: created_at
+            gedmo:
+                timestampable:
+                  on: create
+    oneToMany:
+        notes:
+            targetEntity: Note
+            mappedBy: workorder
+            cascade: ["all"]
+        statusChanges:
+            targetEntity: WorkOrderStatusChange
+            mappedBy: workorder
+            cascade: ['all']
+    manyToOne:
+        current_status:
+            targetEntity: WorkOrderStatus
+            inversedBy: workorders
+            joinColumn:
+                name: current_status_id
+                referencedColumnName: id
+                nullable: false
+    manyToMany:
+      technicians:
+        targetEntity: Selhosa\UserBundle\Entity\User
+        inversedBy: workorders
+        cascade: ['persist']
+        joinTable:
+          name: Technician_WorkOrder
+          joinColumns:
+            technician_id:
+             referencedColumnName: id
+          inverseJoinColumns:
+            workorder_id:
+              referencedColumnName: id
+    lifecycleCallbacks: {  }

@@ -5,8 +5,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>{% block title %}Selhosa.NouAplicatiu{% endblock %}</title>
         {% block stylesheets %}
-            <link href="{{ asset('bundles/selhosareparation/css/bootstrap.css') }}" rel="stylesheet" type="text/css" />
-            <link href="{{ asset('bundles/selhosareparation/css/bootstrap-responsive.min.css') }}" rel="stylesheet" type="text/css" />
+            <link href="{{ asset('bundles/selhosarepair/css/bootstrap.css') }}" rel="stylesheet" type="text/css" />
+            <link href="{{ asset('bundles/selhosarepair/css/bootstrap-responsive.min.css') }}" rel="stylesheet" type="text/css" />
         {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
@@ -18,7 +18,7 @@
                         <a class="brand" href="{{ path('selhosa_reparation_homepage') }}">Selhosa.DOA</a>
                         <ul class="nav">
                             <li class="dropdown active">
-                                <a data-toggle="dropdown" class="dropdown-toggle" href="#">Ordres de treball <b class="caret"></b></a>
+                                <a data-toggle="dropdown" class="dropdown-toggle" href="#">Reparacions DOA <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     {% if is_granted('ROLE_MANAGER') %}
                                         <li><a href="{{ path('selhosa_reparation_create') }}">Nova OT</a></li>
@@ -48,17 +48,17 @@
 
 
         {% endblock body %}
+
         {% block foot_script %}
             {# To only use a subset or add more js overwrite and copy paste this block
             To speed up page loads save a copy of jQuery in your project and override this block to include the correct path
             Otherwise the regeneration is done on every load in dev more with use_controller: true
              #}
-            {% javascripts %}
+            {% block basic_javascripts %}
 
-            <script type="text/javascript" src="{{ asset('bundles/selhosareparation/js/jquery.min.js') }}"></script>
-            <script type="text/javascript" src="{{ asset('bundles/selhosareparation/js/bootstrap.min.js') }}"></script>
-            <script type="text/javascript" src="{{ asset_url }}"></script>
-            {% endjavascripts %}
+            <script type="text/javascript" src="{{ asset('bundles/selhosarepair/js/jquery.min.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('bundles/selhosarepair/js/bootstrap.min.js') }}"></script>
+            {% endblock basic_javascripts %}
 
             {% block extra_javascripts %}
             {% endblock extra_javascripts %}

@@ -5,6 +5,7 @@ app/logs/*
 app/config/parameters.yml
 build/
 vendor
+composer.lock
 composer.phar
-selhosa_dao.sublime*
+*.sublime*
 ./idea

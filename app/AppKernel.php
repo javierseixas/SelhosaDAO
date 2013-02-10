@@ -20,12 +20,13 @@ class AppKernel extends Kernel
             new JMS\DiExtraBundle\JMSDiExtraBundle($this),
             new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
             new Mopa\Bundle\BootstrapBundle\MopaBootstrapBundle(),
-            new Selhosa\ReparationBundle\SelhosaReparationBundle(),
+            new Selhosa\RepairBundle\SelhosaRepairBundle(),
             new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new Selhosa\UserBundle\UserBundle(),
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             new Selhosa\ElectronicBundle\SelhosaElectronicBundle(),
+            new Selhosa\WorkBundle\SelhosaWorkBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

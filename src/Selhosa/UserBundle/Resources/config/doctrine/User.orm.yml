@@ -20,6 +20,6 @@ Selhosa\UserBundle\Entity\User:
             group_id:
               referencedColumnName: id
       workorders:
-          targetEntity: Selhosa\ReparationBundle\Entity\WorkOrder
+          targetEntity: Selhosa\WorkBundle\Entity\WorkOrder
           mappedBy: technicians
     lifecycleCallbacks: {  }

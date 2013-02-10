@@ -1,7 +1,7 @@
 imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
-#   - { resource: @SelhosaReparationBundle/Resources/config/parameters.yml }
+#   - { resource: @SelhosaRepairBundle/Resources/config/parameters.yml }
 
 framework:
     #esi:             ~
