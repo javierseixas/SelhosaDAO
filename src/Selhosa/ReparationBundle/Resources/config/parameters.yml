@@ -1,7 +1,0 @@
-workflow_buttons_template:
-    diagnose: flow_buttons_diagnose.html.twig
-    orderMaterial: flow_buttons_orderMaterial.html.twig
-    receiveMaterial: flow_buttons_receiveMaterial.html.twig
-    repair: flow_buttons_repair.html.twig
-    close: flow_buttons_close.html.twig
-    closed: flow_buttons_closed.html.twig
