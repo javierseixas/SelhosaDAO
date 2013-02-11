@@ -251,6 +251,33 @@ class WorkOrder
         return $this->statusChanges;
     }
 
+    /**
+     * @param Note $note
+     */
+    public function addNote(Note $note)
+    {
+        if (!$this->notes->contains($note))
+            $this->notes->add($note);
+
+        return $this;
+    }
+
+    /**
+     * @param Note $note
+     */
+    public function removeNote(Note $note)
+    {
+        $this->notes->removeElement($note);
+    }
+
+    /**
+     * @return \Doctrine\Common\Collections\ArrayCollection
+     */
+    public function getNotes()
+    {
+        return $this->notes;
+    }
+
 
 
 }

@@ -15,7 +15,7 @@ class Note
     /**
      * @var \DateTime
      */
-    private $created_at;
+    private $createdAt;
 
     /**
      * @var string
@@ -46,7 +46,7 @@ class Note
      */
     public function setCreatedAt($createdAt)
     {
-        $this->created_at = $createdAt;
+        $this->createdAt = $createdAt;
     
         return $this;
     }
@@ -58,7 +58,7 @@ class Note
      */
     public function getCreatedAt()
     {
-        return $this->created_at;
+        return $this->createdAt;
     }
 
     /**
@@ -83,4 +83,24 @@ class Note
     {
         return $this->comment;
     }
+
+    /**
+     * @param \Selhosa\WorkBundle\Entity\WorkOrder $workorder
+     */
+    public function setWorkorder($workorder)
+    {
+        $this->workorder = $workorder;
+
+        return $this->workorder;
+    }
+
+    /**
+     * @return \Selhosa\WorkBundle\Entity\WorkOrder
+     */
+    public function getWorkorder()
+    {
+        return $this->workorder;
+    }
+
+
 }

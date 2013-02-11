@@ -7,8 +7,13 @@ Selhosa\WorkBundle\Entity\Note:
             id: true
             generator:
                 strategy: AUTO
-        created_at:
+        createdAt:
             type: datetime
+            nullable: false
+            column: created_at
+            gedmo:
+                timestampable:
+                  on: create
         comment:
             type: text
     manyToOne:
@@ -19,4 +24,5 @@ Selhosa\WorkBundle\Entity\Note:
                 name: workorder_id
                 referencedColumnName: id
                 nullable: false
+            cascade: ['persist']
     lifecycleCallbacks: {  }
