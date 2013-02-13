@@ -12,7 +12,15 @@ class WorkorderType extends AbstractType
     {
         $builder
             ->add('reference', 'text', array('label' => 'Referència'))
-            ->add('model', 'text')
+            ->add('model', 'text', array(
+                'attr' => array(
+                    'class' => 'typeahead',
+                    'data-source' => "[\"KDL40W5500\",\"KDL60LX900\"]",
+                )
+            ))
+            ->add('electronicCategories', 'entity', array(
+                'class' => 'SelhosaElectronicBundle:ElectronicCategory'
+            ))
             ->add('serialNumber', 'text', array('label' => 'Número de serie'))
             ->add('priority', 'checkbox', array(
                 'required' => false,
@@ -35,6 +43,6 @@ class WorkorderType extends AbstractType
 
     public function getName()
     {
-        return 'workorder';
+        return 'repair';
     }
 }

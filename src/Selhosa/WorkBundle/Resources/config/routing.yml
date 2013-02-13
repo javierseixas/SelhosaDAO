@@ -1,3 +1,15 @@
 selhosa_work_change_status:
     pattern:  /ajax/canviar-estat-ot
     defaults: { _controller: SelhosaWorkBundle:Workflow:changeStatus }
+test_test:
+    pattern:  /test
+    defaults: { _controller: SelhosaWorkBundle:Test:test }
+test_test_1:
+    pattern:  /test1
+    defaults: { _controller: SelhosaWorkBundle:Test:test1 }
+test_test_2:
+    pattern:  /test2
+    defaults: { _controller: SelhosaWorkBundle:Test:test2 }
+test_test_3:
+    pattern:  /test3
+    defaults: { _controller: SelhosaWorkBundle:Test:test3 }

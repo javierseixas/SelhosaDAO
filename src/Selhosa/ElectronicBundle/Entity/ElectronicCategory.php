@@ -153,4 +153,9 @@ class ElectronicCategory
     {
         return $this->brand;
     }
+
+    public function __toString()
+    {
+        return $this->description;
+    }
 }

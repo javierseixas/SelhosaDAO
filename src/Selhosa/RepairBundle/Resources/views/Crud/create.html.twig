@@ -1,5 +1,18 @@
 {% extends "::base.html.twig" %}
 
+{% block extra_javascripts %}
+    <script>
+        $('.typeahead').typeahead({
+            source: ["KDL40W5500","KDL60LX900"],
+            updater: function(item) {
+                return item;
+            }
+        });
+    </script>
+{% endblock extra_javascripts %}
+
+{% form_theme form 'SelhosaRepairBundle:Form:fields.html.twig' %}
+
 {% block container %}
 
     <div class="row-fluid">

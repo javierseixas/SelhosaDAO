@@ -50,6 +50,10 @@ class CrudController extends Controller
             $form->bind($request);
 
             if ($form->isValid()) {
+
+                $electronicCreator = $this->get('selhosa.electronic.creator');
+                $electronicCreator->create($workorder);
+
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($workorder);
                 $em->flush();
