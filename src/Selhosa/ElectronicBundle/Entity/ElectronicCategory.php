@@ -35,11 +35,18 @@ class ElectronicCategory
     private $brand;
 
     /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $interventions;
+
+
+    /**
      * Constructor
      */
     public function __construct()
     {
         $this->electroncis = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->interventions = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
     /**
@@ -153,6 +160,40 @@ class ElectronicCategory
     {
         return $this->brand;
     }
+
+    /**
+     * Add interventions
+     *
+     * @param \Selhosa\RepairBundle\Entity\Intervention $interventions
+     * @return ElectronicCategory
+     */
+    public function addIntervention(\Selhosa\RepairBundle\Entity\Intervention $interventions)
+    {
+        $this->interventions[] = $interventions;
+    
+        return $this;
+    }
+
+    /**
+     * Remove interventions
+     *
+     * @param \Selhosa\RepairBundle\Entity\Intervention $interventions
+     */
+    public function removeIntervention(\Selhosa\RepairBundle\Entity\Intervention $interventions)
+    {
+        $this->interventions->removeElement($interventions);
+    }
+
+    /**
+     * Get interventions
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getInterventions()
+    {
+        return $this->interventions;
+    }
+    
 
     public function __toString()
     {

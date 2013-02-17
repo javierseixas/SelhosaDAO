@@ -19,6 +19,11 @@ Selhosa\ElectronicBundle\Entity\ElectronicCategory:
             targetEntity: Electronic
             mappedBy: category
             cascade: ["all"]
+    oneToMany:
+        interventions:
+            targetEntity: Selhosa\RepairBundle\Entity\Intervention
+            mappedBy: electronicCategories
+            cascade: ["all"]
     manyToOne:
         brand:
             targetEntity: Brand

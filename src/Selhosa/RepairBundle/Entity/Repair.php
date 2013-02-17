@@ -50,6 +50,4 @@ class Repair extends WorkOrder
         $this->categories = $categories;
     }
 
-
-
 }
