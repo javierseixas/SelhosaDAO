@@ -1,0 +1,25 @@
+Selhosa\RepairBundle\Entity\Intervention:
+    type: entity
+    table: Intervention
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        code:
+            type: string
+            length: '10'
+        description:
+            type: string
+            length: '100'
+    manyToOne:
+        electronicCategory:
+            targetEntity: Selhosa\ElectronicBundle\Entity\ElectronicCategory
+            inversedBy: interventions
+            joinColumn:
+                name: electronic_category_id
+                referencedColumnName: id
+                nullable: false
+            cascade: ['persist']
+    lifecycleCallbacks: {  }

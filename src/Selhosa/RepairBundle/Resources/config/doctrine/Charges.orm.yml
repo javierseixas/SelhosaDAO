@@ -1,0 +1,32 @@
+Selhosa\RepairBundle\Entity\Charges:
+    type: entity
+    table: Charges
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        realWorkedTime:
+            type: integer
+            nullable: true
+        chargebleTime:
+            type: integer
+            nullable: true
+    manyToOne:
+        repairs:
+            targetEntity: Repair
+            inversedBy: charges
+            joinColumn:
+                name: repair_id
+                referencedColumnName: id
+                nullable: false
+            cascade: ['persist']
+        interventions:
+            targetEntity: Intervention
+            joinColumn:
+                name: intervention_id
+                referencedColumnName: id
+                nullable: true
+            cascade: ['persist']
+    lifecycleCallbacks: {  }
