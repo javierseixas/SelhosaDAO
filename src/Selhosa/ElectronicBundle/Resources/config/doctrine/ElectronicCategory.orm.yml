@@ -1,6 +1,7 @@
 Selhosa\ElectronicBundle\Entity\ElectronicCategory:
     type: entity
     table: ElectronicCategory
+    repositoryClass: Selhosa\ElectronicBundle\Repository\ElectronicCategoryRepository
     fields:
         id:
             type: integer

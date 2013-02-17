@@ -1,5 +1,9 @@
 {% extends "::base.html.twig" %}
 
+{% block extra_javascripts %}
+    {% include 'SelhosaRepairBundle:Crud:select_electronic.js.twig' %}
+{% endblock extra_javascripts %}
+
 {% block container %}
 
     <div class="row-fluid">

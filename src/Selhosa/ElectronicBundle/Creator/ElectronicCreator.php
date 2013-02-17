@@ -31,7 +31,7 @@ class ElectronicCreator
             $electronic = new Electronic();
             $electronic
                 ->setModel($model)
-                ->setCategory($this->defaultCategory());
+                ->setCategory($repair->getElectronicCategories());
         }
 
         $repair->setElectronic($electronic);
@@ -39,6 +39,8 @@ class ElectronicCreator
     }
 
     /**
+     * @deprecated
+     *
      * @return \Selhosa\ElectronicBundle\Entity\ElectronicCategory
      */
     protected function defaultCategory()

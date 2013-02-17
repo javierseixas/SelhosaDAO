@@ -1,3 +1,6 @@
-selhosa_electronic_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: SelhosaElectronicBundle:Default:index }
+selhosa_electronic_ajax_get_electronic_categories:
+    pattern:  /ajax/electronic-categories
+    defaults: { _controller: SelhosaElectronicBundle:Ajax:getElectronicCategories }
+selhosa_electronic_ajax_does_model_exist:
+    pattern:  /ajax/does-model-exist
+    defaults: { _controller: SelhosaElectronicBundle:Ajax:doesModelExist }

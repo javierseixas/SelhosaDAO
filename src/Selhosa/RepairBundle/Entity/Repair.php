@@ -19,6 +19,9 @@ class Repair extends WorkOrder
      */
     private $electronic;
 
+    // TODO Pulir que Repair tenga categories, que no pega mucho porque no tiene relación en la otra entidad
+    private $categories;
+
     /**
      * @param \Selhosa\ElectronicBundle\Entity\Electronic $electronic
      */
@@ -39,7 +42,7 @@ class Repair extends WorkOrder
 
     public function getElectronicCategories()
     {
-        return null;
+        return $this->categories;
     }
 
     public function setElectronicCategories($categories)

@@ -1,0 +1,25 @@
+<script>
+    $('.typeahead').typeahead({
+        source: {{ models | json_encode() | raw }}
+    });
+    $('#repair_model').focusout(function() {
+
+        if ($('#repair_model').val() !== "") {
+
+            $.ajax({
+                type: "GET",
+                url: "{{ path('selhosa_electronic_ajax_does_model_exist') }}",
+                data: { 'model' : $('#repair_model').val() },
+                success: function(data) {
+                    if (!data.exists) {
+                        $('#repair_electronicCategories_control_group').show();
+                    }
+                },
+                context: document.body
+            }).done(function() {
+
+                    });
+        }
+    });
+
+</script>

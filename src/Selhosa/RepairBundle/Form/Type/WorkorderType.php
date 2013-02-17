@@ -15,11 +15,13 @@ class WorkorderType extends AbstractType
             ->add('model', 'text', array(
                 'attr' => array(
                     'class' => 'typeahead',
-                    'data-source' => "[\"KDL40W5500\",\"KDL60LX900\"]",
+                    'autocomplete' => "off",
                 )
             ))
             ->add('electronicCategories', 'entity', array(
-                'class' => 'SelhosaElectronicBundle:ElectronicCategory'
+                'class' => 'SelhosaElectronicBundle:ElectronicCategory',
+                'required' => false,
+                'empty_value' => 'Tria la categoria del Model'
             ))
             ->add('serialNumber', 'text', array('label' => 'Número de serie'))
             ->add('priority', 'checkbox', array(

@@ -1,6 +1,7 @@
 Selhosa\ElectronicBundle\Entity\Electronic:
     type: entity
     table: Electronic
+    repositoryClass: Selhosa\ElectronicBundle\Repository\ElectronicRepository
     indexes:
         reference_IDX_1:
           columns: [ model ]

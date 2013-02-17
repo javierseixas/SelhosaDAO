@@ -44,6 +44,9 @@ class CrudController extends Controller
         $status = $this->getDoctrine()->getManager()->getRepository('SelhosaWorkBundle:WorkOrderStatus')->find(10);
         $workorder->setCurrentStatus($status);
 
+        // TODO Pulir la manera como se recuperan los modelos. Probablemente no sea falta recuperar todos los objetos
+        $models = $this->getDoctrine()->getManager()->getRepository('SelhosaElectronicBundle:Electronic')->findAllModels();
+
         $form = $this->createForm(new WorkorderType(),$workorder);
 
         if ($request->isMethod('POST')) {
@@ -63,7 +66,8 @@ class CrudController extends Controller
         }
 
         return $this->render('SelhosaRepairBundle:Crud:create.html.twig', array(
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'models' => $models
         ));
     }
 
