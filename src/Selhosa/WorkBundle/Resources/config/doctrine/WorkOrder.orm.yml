@@ -47,10 +47,6 @@ Selhosa\WorkBundle\Entity\WorkOrder:
             targetEntity: WorkOrderStatusChange
             mappedBy: workorder
             cascade: ['all']
-        charges:
-            targetEntity: Selhosa\RepairBundle\Entity\Charges
-            mappedBy: repairs
-            cascade: ["all"]
     manyToOne:
         current_status:
             targetEntity: WorkOrderStatus

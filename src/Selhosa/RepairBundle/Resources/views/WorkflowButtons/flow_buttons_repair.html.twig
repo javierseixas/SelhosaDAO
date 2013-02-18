@@ -4,9 +4,9 @@
         <span class="caret"></span>
     </button>
     <ul class="dropdown-menu">
-        <li><a href="#" class="change-workorderstatus" data-workorderid="{{ workorder.id }}" data-newstatuskeyword="close" data-metadata="{'intervention':'1'}">Intervenció simple</a></li>
-        <li><a href="#" class="change-workorderstatus" data-workorderid="{{ workorder.id }}" data-newstatuskeyword="close" data-metadata="{'intervention':'2'}">Reparada</a></li>
-        <li><a href="#" class="change-workorderstatus" data-workorderid="{{ workorder.id }}" data-newstatuskeyword="close" data-metadata="{'intervention':'3'}">Canvi de producte</a></li>
+        {% for categoryIntervention in workorder.electronic.category.interventions  %}
+        <li><a href="#" class="change-workorderstatus" data-workorderid="{{ workorder.id }}" data-newstatuskeyword="close" data-metadata='{"intervention":"{{ categoryIntervention.intervention.id }}"}'>{{ categoryIntervention.intervention.description }}</a></li>
+        {% endfor %}
     </ul>
 </div>
 

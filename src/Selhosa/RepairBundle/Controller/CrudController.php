@@ -23,7 +23,7 @@ class CrudController extends Controller
             ->getResult($filter, $currentStatus->getId());
 
         $buttonsTemplate = $this->get('reparation.workflow.buttons.dumper')->getTemplate($statusKeyword);
-
+$workorder = $workorders[0];
         return $this->render('SelhosaRepairBundle:Crud:index.html.twig', array(
             'workorders' => $workorders,
             'buttonsTemplate' => $buttonsTemplate,

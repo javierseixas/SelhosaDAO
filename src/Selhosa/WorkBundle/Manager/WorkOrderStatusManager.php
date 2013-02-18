@@ -61,8 +61,11 @@ class WorkOrderStatusManager
         $this->changeWorkOrderStatus('orderMaterial');
     }
 
-    public function repairToClose()
+    public function repairToClose($metada)
     {
+
+        if (isset($metada['intervention']))
+            $this->chargeIntervention($metada['intervention']);
         $this->changeWorkOrderStatus('close');
     }
 
@@ -100,5 +103,20 @@ class WorkOrderStatusManager
 
         $this->em->persist($this->workorder);
         $this->em->flush();
+    }
+
+    protected function chargeIntervention($interventionId = null)
+    {
+        if (!$interventionId) { return; }
+
+        $intervention = $this->em->getRepository('SelhosaRepairBundle:Intervention')->find($interventionId);
+
+        if (!$intervention) { return; }
+
+        $charge = new \Selhosa\RepairBundle\Entity\Charges();
+        $charge->setIntervention($intervention);
+        $charge->setRepair($this->workorder);
+
+        $this->workorder->addCharge($charge);
     }
 }

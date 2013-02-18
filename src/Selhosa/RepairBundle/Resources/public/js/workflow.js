@@ -3,7 +3,7 @@ $(document).ready(function () {
     var changeStatus = function(workorder,newstatuskeyword,metadata) {
         $.ajax({
             type: "GET",
-            url: "/app_dev.php/aplicatiu/ajax/canviar-estat-ot",
+            url: "/aplicatiu/ajax/canviar-estat-ot",
             data: {
                 'workorderid': workorder,
                 'newstatuskeyword': newstatuskeyword,

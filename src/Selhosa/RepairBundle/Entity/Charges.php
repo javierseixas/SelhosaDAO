@@ -27,12 +27,12 @@ class Charges
     /**
      * @var \Selhosa\RepairBundle\Entity\Repair
      */
-    private $repairs;
+    private $repair;
 
     /**
      * @var \Selhosa\RepairBundle\Entity\Intervention
      */
-    private $interventions;
+    private $intervention;
 
 
     /**
@@ -97,9 +97,9 @@ class Charges
      * @param \Selhosa\RepairBundle\Entity\Repair $repairs
      * @return Charges
      */
-    public function setRepairs(\Selhosa\RepairBundle\Entity\Repair $repairs)
+    public function setRepair(\Selhosa\RepairBundle\Entity\Repair $repair)
     {
-        $this->repairs = $repairs;
+        $this->repair = $repair;
     
         return $this;
     }
@@ -109,9 +109,9 @@ class Charges
      *
      * @return \Selhosa\RepairBundle\Entity\Repair 
      */
-    public function getRepairs()
+    public function getRepair()
     {
-        return $this->repairs;
+        return $this->repair;
     }
 
     /**
@@ -120,9 +120,9 @@ class Charges
      * @param \Selhosa\RepairBundle\Entity\Intervention $interventions
      * @return Charges
      */
-    public function setInterventions(\Selhosa\RepairBundle\Entity\Intervention $interventions = null)
+    public function setIntervention(\Selhosa\RepairBundle\Entity\Intervention $intervention = null)
     {
-        $this->interventions = $interventions;
+        $this->intervention = $intervention;
     
         return $this;
     }
@@ -132,8 +132,8 @@ class Charges
      *
      * @return \Selhosa\RepairBundle\Entity\Intervention 
      */
-    public function getInterventions()
+    public function getIntervention()
     {
-        return $this->interventions;
+        return $this->intervention;
     }
 }

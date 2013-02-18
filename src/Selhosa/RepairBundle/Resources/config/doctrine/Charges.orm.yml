@@ -14,7 +14,7 @@ Selhosa\RepairBundle\Entity\Charges:
             type: integer
             nullable: true
     manyToOne:
-        repairs:
+        repair:
             targetEntity: Repair
             inversedBy: charges
             joinColumn:
@@ -22,7 +22,7 @@ Selhosa\RepairBundle\Entity\Charges:
                 referencedColumnName: id
                 nullable: false
             cascade: ['persist']
-        interventions:
+        intervention:
             targetEntity: Intervention
             joinColumn:
                 name: intervention_id

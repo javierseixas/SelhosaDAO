@@ -13,4 +13,9 @@ Selhosa\RepairBundle\Entity\Repair:
                 referencedColumnName: id
                 nullable: true
             cascade: ['persist']
+    oneToMany:
+        charges:
+            targetEntity: Selhosa\RepairBundle\Entity\Charges
+            mappedBy: repair
+            cascade: ["all"]
     lifecycleCallbacks: {  }

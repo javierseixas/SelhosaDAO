@@ -3,6 +3,7 @@
 namespace Selhosa\RepairBundle\Entity;
 
 use Selhosa\WorkBundle\Entity\WorkOrder;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * WorkOrder
@@ -19,8 +20,19 @@ class Repair extends WorkOrder
      */
     private $electronic;
 
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $charges;
+
     // TODO Pulir que Repair tenga categories, que no pega mucho porque no tiene relación en la otra entidad
     private $categories;
+
+
+    public function __construct()
+    {
+        $this->charges = new ArrayCollection();
+    }
 
     /**
      * @param \Selhosa\ElectronicBundle\Entity\Electronic $electronic
@@ -48,6 +60,40 @@ class Repair extends WorkOrder
     public function setElectronicCategories($categories)
     {
         $this->categories = $categories;
+    }
+
+
+    /**
+     * Add charges
+     *
+     * @param \Selhosa\RepairBundle\Entity\Charges $charges
+     * @return WorkOrder
+     */
+    public function addCharge(\Selhosa\RepairBundle\Entity\Charges $charges)
+    {
+        $this->charges[] = $charges;
+
+        return $this;
+    }
+
+    /**
+     * Remove charges
+     *
+     * @param \Selhosa\RepairBundle\Entity\Charges $charges
+     */
+    public function removeCharge(\Selhosa\RepairBundle\Entity\Charges $charges)
+    {
+        $this->charges->removeElement($charges);
+    }
+
+    /**
+     * Get charges
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCharges()
+    {
+        return $this->charges;
     }
 
 }
