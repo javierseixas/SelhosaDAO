@@ -6,9 +6,9 @@ selhosa_electronic:
     resource: "@SelhosaElectronicBundle/Resources/config/routing.yml"
     prefix:   /aplicatiu
 
-selhosa_reparation:
+selhosa_repair:
     resource: "@SelhosaRepairBundle/Resources/config/routing.yml"
-    prefix:   /aplicatiu/reparacions
+    prefix:   /aplicatiu
 
 user_bundle:
     resource: "@UserBundle/Resources/config/routing.yml"
