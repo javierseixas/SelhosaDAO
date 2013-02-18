@@ -86,26 +86,4 @@ class Intervention
         return $this->description;
     }
 
-    /**
-     * Set electronicCategory
-     *
-     * @param \Selhosa\ElectronicBundle\Entity\ElectronicCategory $electronicCategory
-     * @return Intervention
-     */
-    public function setElectronicCategory(\Selhosa\ElectronicBundle\Entity\ElectronicCategory $electronicCategory)
-    {
-        $this->electronicCategory = $electronicCategory;
-    
-        return $this;
-    }
-
-    /**
-     * Get electronicCategory
-     *
-     * @return \Selhosa\ElectronicBundle\Entity\ElectronicCategory 
-     */
-    public function getElectronicCategory()
-    {
-        return $this->electronicCategory;
-    }
 }

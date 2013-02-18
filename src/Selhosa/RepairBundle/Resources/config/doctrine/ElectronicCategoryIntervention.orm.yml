@@ -1,0 +1,25 @@
+Selhosa\RepairBundle\Entity\ElectronicCategoryIntervention:
+    type: entity
+    table: ElectronicCategory_Intervention
+    id:
+        electronicCategory:
+            type: integer
+            associationKey: true
+        intervention:
+            type: integer
+            associationKey: true
+
+    manyToOne:
+        electronicCategory:
+            targetEntity: Selhosa\ElectronicBundle\Entity\ElectronicCategory
+            inversedBy: interventions
+            joinColumn:
+                name: electronic_category_id
+                referencedColumnName: id
+        intervention:
+            targetEntity: Intervention
+            joinColumn:
+                name: intervention_id
+                referencedColumnName: id
+    lifecycleCallbacks: {  }
+

@@ -16,6 +16,7 @@ class WorkflowController extends Controller
         $request = $this->getRequest();
 
         $id = (int)$request->get('workorderid');
+        $metadata = json_decode($request->get('metadata'));
         $workorder = $this->getDoctrine()->getManager()->getRepository('SelhosaWorkBundle:WorkOrder')->find($id);
 
         $manager = new WorkOrderStatusManager($workorder, $this->getDoctrine()->getManager(), $this->get('security.context')->getToken()->getUser());

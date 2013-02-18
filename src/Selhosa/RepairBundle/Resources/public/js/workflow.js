@@ -1,12 +1,13 @@
 $(document).ready(function () {
 
-    var changeStatus = function(workorder,newstatuskeyword) {
+    var changeStatus = function(workorder,newstatuskeyword,metadata) {
         $.ajax({
             type: "GET",
-            url: "/aplicatiu/ajax/canviar-estat-ot",
+            url: "/app_dev.php/aplicatiu/ajax/canviar-estat-ot",
             data: {
                 'workorderid': workorder,
-                'newstatuskeyword': newstatuskeyword
+                'newstatuskeyword': newstatuskeyword,
+                'metadata': metadata
             },
             success: function() {
                 $('#workorder-'+workorder).hide();
@@ -19,7 +20,7 @@ $(document).ready(function () {
     $('.change-workorderstatus').each(function() {
         var workorderid,statuskeyword;
        $(this).click(function() {
-           changeStatus($(this).data('workorderid'),$(this).data('newstatuskeyword'));
+           changeStatus($(this).data('workorderid'),$(this).data('newstatuskeyword'),$(this).data('metadata'));
        })
     });
 

@@ -1,2 +1,13 @@
-<button class="btn btn-mini change-workorderstatus" type="button" data-workorderid="{{ workorder.id }}" data-newstatuskeyword="close">Reparada</button>
+<div class="btn-group">
+    <button class="btn btn-mini dropdown-toggle" data-toggle="dropdown">
+        Reparada
+        <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu">
+        <li><a href="#" class="change-workorderstatus" data-workorderid="{{ workorder.id }}" data-newstatuskeyword="close" data-metadata="{'intervention':'1'}">Intervenció simple</a></li>
+        <li><a href="#" class="change-workorderstatus" data-workorderid="{{ workorder.id }}" data-newstatuskeyword="close" data-metadata="{'intervention':'2'}">Reparada</a></li>
+        <li><a href="#" class="change-workorderstatus" data-workorderid="{{ workorder.id }}" data-newstatuskeyword="close" data-metadata="{'intervention':'3'}">Canvi de producte</a></li>
+    </ul>
+</div>
+
 <button class="btn btn-mini change-workorderstatus" type="button" data-workorderid="{{ workorder.id }}" data-newstatuskeyword="orderMaterial">Nou material imputat</button>

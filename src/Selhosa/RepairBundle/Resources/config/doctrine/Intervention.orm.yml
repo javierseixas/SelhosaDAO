@@ -13,13 +13,4 @@ Selhosa\RepairBundle\Entity\Intervention:
         description:
             type: string
             length: '100'
-    manyToOne:
-        electronicCategory:
-            targetEntity: Selhosa\ElectronicBundle\Entity\ElectronicCategory
-            inversedBy: interventions
-            joinColumn:
-                name: electronic_category_id
-                referencedColumnName: id
-                nullable: false
-            cascade: ['persist']
     lifecycleCallbacks: {  }
