@@ -32,6 +32,8 @@ class Repair extends WorkOrder
     public function __construct()
     {
         $this->charges = new ArrayCollection();
+
+        parent::__construct();
     }
 
     /**
