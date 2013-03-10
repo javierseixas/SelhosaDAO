@@ -2,17 +2,17 @@
     $('.typeahead').typeahead({
         source: {{ models | json_encode() | raw }}
     });
-    $('#repair_model').focusout(function() {
 
-        if ($('#repair_model').val() !== "") {
+    var checkModelExists = function(form) {
+        if ($('#'+form+'_model').val() !== "") {
 
             $.ajax({
                 type: "GET",
                 url: "{{ path('selhosa_electronic_ajax_does_model_exist') }}",
-                data: { 'model' : $('#repair_model').val() },
+                data: { 'model' : $('#'+form+'_model').val() },
                 success: function(data) {
                     if (!data.exists) {
-                        $('#repair_electronicCategories_control_group').show();
+                        $('#'+form+'_electronicCategories_control_group').show();
                     }
                 },
                 context: document.body
@@ -20,6 +20,9 @@
 
                     });
         }
-    });
+    };
+
+    $('#doarepair_model').focusout(function() { checkModelExists('doarepair') });
+    $('#ceplrepair_model').focusout(function() { checkModelExists('ceptlrepair') });
 
 </script>

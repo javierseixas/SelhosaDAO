@@ -9,6 +9,8 @@ Selhosa\WorkBundle\Entity\WorkOrder:
     discriminatorMap:
         workorder: Selhosa\WorkBundle\Entity\WorkOrder
         repair: Selhosa\RepairBundle\Entity\Repair
+        doa_repair: Selhosa\RepairBundle\Entity\DOARepair
+        cepl_repair: Selhosa\RepairBundle\Entity\CEPLRepair
     repositoryClass: Selhosa\WorkBundle\Repository\WorkOrderRepository
     indexes:
         reference_IDX_1:

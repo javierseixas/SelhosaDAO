@@ -1,0 +1,9 @@
+Selhosa\RepairBundle\Entity\CEPLRepair:
+    type: entity
+    table: CEPLRepair
+    fields:
+        deliveryNote:
+            type: string
+            length: '20'
+            column: delivery_note
+    lifecycleCallbacks: {  }

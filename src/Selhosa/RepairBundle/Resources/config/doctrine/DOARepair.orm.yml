@@ -1,0 +1,16 @@
+Selhosa\RepairBundle\Entity\DOARepair:
+    type: entity
+    table: DOARepair
+    fields:
+        rmaid:
+            type: string
+            length: '20'
+        creditMemo:
+            type: string
+            column: credit_memo
+            length: '20'
+        creditDelivery:
+            type: string
+            length: '20'
+            column: credit_delivery
+    lifecycleCallbacks: {  }

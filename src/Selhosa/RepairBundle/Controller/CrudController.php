@@ -4,8 +4,10 @@ namespace Selhosa\RepairBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Selhosa\RepairBundle\Entity\Repair;
+use Selhosa\RepairBundle\Entity\DOARepair;
 use Selhosa\WorkBundle\Entity\WorkOrderStatus;
 use Selhosa\RepairBundle\Form\Type\WorkorderType;
+use Selhosa\RepairBundle\Form\Type\DOARepairType;
 use Selhosa\RepairBundle\Form\Type\Filter\ReparationWorkflowListFilterType;
 
 
@@ -23,7 +25,7 @@ class CrudController extends Controller
             ->getResult($filter, $currentStatus->getId());
 
         $buttonsTemplate = $this->get('reparation.workflow.buttons.dumper')->getTemplate($statusKeyword);
-$workorder = $workorders[0];
+
         return $this->render('SelhosaRepairBundle:Crud:index.html.twig', array(
             'workorders' => $workorders,
             'buttonsTemplate' => $buttonsTemplate,
@@ -40,14 +42,14 @@ $workorder = $workorders[0];
 
         $request = $this->getRequest();
 
-        $workorder = new Repair();
+        $workorder = new DOARepair();
         $status = $this->getDoctrine()->getManager()->getRepository('SelhosaWorkBundle:WorkOrderStatus')->find(10);
         $workorder->setCurrentStatus($status);
 
         // TODO Pulir la manera como se recuperan los modelos. Probablemente no sea falta recuperar todos los objetos
         $models = $this->getDoctrine()->getManager()->getRepository('SelhosaElectronicBundle:Electronic')->findAllModels();
 
-        $form = $this->createForm(new WorkorderType(),$workorder);
+        $form = $this->createForm(new DOARepairType(),$workorder);
 
         if ($request->isMethod('POST')) {
             $form->bind($request);
@@ -79,9 +81,12 @@ $workorder = $workorders[0];
 
         $request = $this->getRequest();
 
-        $workorder = $this->getDoctrine()->getManager()->getRepository('SelhosaRepairBundle:Repair')->find($id);
+        $workorder = $this->getDoctrine()->getManager()->getRepository('SelhosaRepairBundle:DOARepair')->find($id);
 
-        $form = $this->createForm(new WorkorderType(),$workorder);
+        $form = $this->createForm(new DOARepairType(),$workorder);
+
+        // TODO Pulir la manera como se recuperan los modelos. Probablemente no sea falta recuperar todos los objetos
+        $models = $this->getDoctrine()->getManager()->getRepository('SelhosaElectronicBundle:Electronic')->findAllModels();
 
         if ($request->isMethod('POST')) {
             $form->bind($request);
@@ -97,7 +102,8 @@ $workorder = $workorders[0];
 
         return $this->render('SelhosaRepairBundle:Crud:update.html.twig', array(
             'form' => $form->createView(),
-            'workorder' => $workorder
+            'workorder' => $workorder,
+            'models' => $models
         ));
     }
 
