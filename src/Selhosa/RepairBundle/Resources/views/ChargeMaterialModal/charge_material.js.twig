@@ -1,0 +1,13 @@
+<script>
+
+    jQuery(document).ready(function() {
+
+        $('.chargeAction').click(function() {
+            var form = $(this).parents('div').siblings('.modal-body').children('form');
+            form.ajaxForm({url: '{{ path('selhosa_reparation_charge_material') }}', type: 'post' });
+            form.ajaxSubmit();
+        });
+
+    });
+
+</script>

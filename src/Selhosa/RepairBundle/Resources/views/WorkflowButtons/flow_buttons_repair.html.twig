@@ -1,13 +1,15 @@
 <div class="btn-group">
-    <button class="btn btn-mini dropdown-toggle" data-toggle="dropdown">
-        Reparada
-        <span class="caret"></span>
-    </button>
-    <ul class="dropdown-menu">
-        {% for categoryIntervention in workorder.electronic.category.interventions  %}
-        <li><a href="#" class="change-workorderstatus" data-workorderid="{{ workorder.id }}" data-newstatuskeyword="close" data-metadata='{"intervention":"{{ categoryIntervention.intervention.id }}"}'>{{ categoryIntervention.intervention.description }}</a></li>
-        {% endfor %}
-    </ul>
-</div>
+    <div class="btn-group">
+        <button class="btn btn-mini dropdown-toggle" data-toggle="dropdown">
+            Reparada
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            {% for categoryIntervention in workorder.electronic.category.interventions  %}
+            <li><a href="#" class="change-workorderstatus" data-workorderid="{{ workorder.id }}" data-newstatuskeyword="close" data-metadata='{"intervention":"{{ categoryIntervention.intervention.id }}"}'>{{ categoryIntervention.intervention.description }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
 
-<button class="btn btn-mini change-workorderstatus" type="button" data-workorderid="{{ workorder.id }}" data-newstatuskeyword="orderMaterial">Nou material imputat</button>
+    <button class="btn btn-mini change-workorderstatus" type="button" data-workorderid="{{ workorder.id }}" data-newstatuskeyword="orderMaterial">Nou material imputat</button>
+</div>

@@ -1,7 +1,9 @@
 {% extends "::base.html.twig" %}
 
 {% block extra_javascripts %}
-<script src="{{ asset('bundles/selhosarepair/js/workflow.js') }}" ></script>
+    <script src="{{ asset('bundles/selhosarepair/js/workflow.js') }}" ></script>
+    {# TODO este include queda muy feo aquí #}}
+    {% include 'SelhosaRepairBundle:ChargeMaterialModal:charge_material.js.twig' %}
 {% endblock extra_javascripts %}
 
 {% block container %}

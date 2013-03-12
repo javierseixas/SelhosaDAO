@@ -1,0 +1,56 @@
+<form action="{{ path('selhosa_reparation_charge_material') }}" method="post">
+
+    {{ form_label(form.references) }}
+    {{ form_errors(form.references) }}
+
+    <ul class="unstyled" id="material-fields-list" data-prototype="{{ form_widget(form.references.vars.prototype) | e }}">
+        {% for reference in form.references %}
+            <li>
+                {{ form_errors(reference) }}
+                {{ form_widget(reference) }}
+            </li>
+        {% endfor %}
+    </ul>
+
+    <a class="btn" id="charge-another-material" href="#">Afegir imputació<a/>
+</form>
+
+<script type="text/javascript">
+    // keep track of how many email fields have been rendered
+    var emailCount = '{{ form.references | length }}';
+
+    jQuery(document).ready(function() {
+
+        jQuery('#material-fields-list').find('li').each(function() {
+            addTagFormDeleteLink($(this));
+        });
+
+        jQuery('#charge-another-material').click(function() {
+            var emailList = jQuery('#material-fields-list');
+            var newWidget = emailList.attr('data-prototype');
+            newWidget = newWidget.replace(/__name__/g, emailCount);
+            emailCount++;
+
+            var newLi = jQuery('<li></li>').html(newWidget);
+            newLi.appendTo(jQuery('#material-fields-list'));
+            addTagFormDeleteLink(newLi);
+
+            return false;
+        });
+
+
+    })
+
+    function addTagFormDeleteLink($tagFormLi) {
+        var $removeFormA = $('<button type="button" class="close">&times;</button>');
+        $tagFormLi.append($removeFormA);
+
+        $removeFormA.on('click', function(e) {
+            // prevent the link from creating a "#" on the URL
+            e.preventDefault();
+
+            // remove the li for the tag form
+            $tagFormLi.remove();
+        });
+    }
+</script>
