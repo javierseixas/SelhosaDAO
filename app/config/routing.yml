@@ -1,3 +1,7 @@
+selhosa_material:
+    resource: "@SelhosaMaterialBundle/Resources/config/routing.yml"
+    prefix:   /
+
 selhosa_work:
     resource: "@SelhosaWorkBundle/Resources/config/routing.yml"
     prefix:   /aplicatiu

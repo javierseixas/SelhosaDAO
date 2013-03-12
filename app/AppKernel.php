@@ -27,6 +27,7 @@ class AppKernel extends Kernel
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             new Selhosa\ElectronicBundle\SelhosaElectronicBundle(),
             new Selhosa\WorkBundle\SelhosaWorkBundle(),
+            new Selhosa\MaterialBundle\SelhosaMaterialBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

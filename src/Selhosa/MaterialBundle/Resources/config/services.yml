@@ -1,0 +1,7 @@
+parameters:
+#    selhosa_material.example.class: Selhosa\MaterialBundle\Example
+
+services:
+#    selhosa_material.example:
+#        class: %selhosa_material.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

@@ -1,0 +1,20 @@
+Selhosa\MaterialBundle\Entity\Material:
+    type: entity
+    table: Material
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        reference:
+            type: string
+            length: '30'
+        description:
+            type: string
+            length: '255'
+        costPrice:
+            type: decimal
+            precision: 2
+            column: cost_price
+    lifecycleCallbacks: {  }
