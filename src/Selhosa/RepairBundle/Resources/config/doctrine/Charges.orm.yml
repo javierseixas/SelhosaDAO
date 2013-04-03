@@ -29,4 +29,11 @@ Selhosa\RepairBundle\Entity\Charges:
                 referencedColumnName: id
                 nullable: true
             cascade: ['persist']
+        material:
+            targetEntity: Selhosa\MaterialBundle\Entity\Material
+            joinColumn:
+                name: material_id
+                referencedColumnName: id
+                nullable: true
+            cascade: ['persist']
     lifecycleCallbacks: {  }

@@ -9,6 +9,7 @@ use Selhosa\WorkBundle\Entity\WorkOrderStatus;
 use Selhosa\RepairBundle\Form\Type\WorkorderType;
 use Selhosa\RepairBundle\Form\Type\DOARepairType;
 use Selhosa\RepairBundle\Form\Type\Filter\ReparationWorkflowListFilterType;
+use Selhosa\RepairBundle\Form\Type\RepairMaterialChargesType;
 
 
 class CrudController extends Controller
@@ -21,16 +22,22 @@ class CrudController extends Controller
 
         $filter = $this->createForm(new ReparationWorkflowListFilterType());
 
-        $workorders = $this->get('reparation.workorder.list.filter')
+        $repairs = $this->get('reparation.workorder.list.filter')
             ->getResult($filter, $currentStatus->getId());
+
+        $chargeMaterialFormViews = array();
+        foreach ($repairs as $repair) {
+            $chargeMaterialFormViews[$repair->getId()] = $this->createForm(new RepairMaterialChargesType($repair->getId()), $repair)->createView();
+        }
 
         $buttonsTemplate = $this->get('reparation.workflow.buttons.dumper')->getTemplate($statusKeyword);
 
         return $this->render('SelhosaRepairBundle:Crud:index.html.twig', array(
-            'workorders' => $workorders,
+            'workorders' => $repairs,
             'buttonsTemplate' => $buttonsTemplate,
             'filter' => $filter->createView(),
-            'currentStatus' => $currentStatus
+            'currentStatus' => $currentStatus,
+            'chargeMaterialFormViews' => $chargeMaterialFormViews
         ));
     }
 

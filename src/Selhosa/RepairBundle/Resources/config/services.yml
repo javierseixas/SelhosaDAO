@@ -6,6 +6,7 @@ parameters:
     repair: flow_buttons_repair.html.twig
     close: flow_buttons_close.html.twig
     closed: flow_buttons_closed.html.twig
+  selhosa.repair.material_creator.class: Selhosa\RepairBundle\Creator\MaterialCreator
 
 services:
   reparation.workflow.buttons.dumper:
@@ -22,3 +23,7 @@ services:
     arguments: ['@service_container']
     tags:
       - { name: doctrine.event_listener, event: prePersist }
+
+  selhosa.repair.material_creator:
+    class: %selhosa.repair.material_creator.class%
+    arguments: [@doctrine.orm.entity_manager]

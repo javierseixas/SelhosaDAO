@@ -14,5 +14,5 @@ selhosa_reparation_read:
     pattern:  /veure-ot/{id}
     defaults: { _controller: SelhosaRepairBundle:Crud:read }
 selhosa_reparation_charge_material:
-    pattern:  /imputar-material
-    defaults: { _controller: SelhosaRepairBundle:ChargeMaterial:renderForm }
+    pattern:  /imputar-material/{repairId}
+    defaults: { _controller: SelhosaRepairBundle:ChargeMaterial:processForm }

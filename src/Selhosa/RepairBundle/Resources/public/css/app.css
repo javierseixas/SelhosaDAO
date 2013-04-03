@@ -1,3 +1,7 @@
 #doarepair_electronicCategories_control_group, #ceplrepair_electronicCategories_control_group {
     display: none;
 }
+
+.material-reference {
+    margin-right: 3px;
+}

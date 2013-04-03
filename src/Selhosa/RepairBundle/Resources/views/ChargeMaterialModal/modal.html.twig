@@ -1,13 +1,22 @@
-<div class="modal hide fade" id="chargeMaterialModal-{{ workorder.id }}" data-remote="{{ path('selhosa_reparation_charge_material') }}">
+<div class="modal hide fade" id="chargeMaterialModal-{{ workorder.id }}">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h3>Imputar materials</h3>
     </div>
     <div class="modal-body">
+        <form action="{{ path('selhosa_reparation_charge_material', { 'repairId': workorder.id }) }}" method="post">
 
+            {% form_theme chargeMaterialFormViews[workorder.id] 'SelhosaRepairBundle:Form:charge_material.html.twig' %}
+
+            {{ form_widget(chargeMaterialFormViews[workorder.id]) }}
+
+            {{ form_rest(chargeMaterialFormViews[workorder.id]) }}
+
+            <a class="btn add_material_charge" id="add_material_charge" data-repairid="{{ workorder.id }}" href="#">Afegir imputació<a/>
+        </form>
     </div>
     <div class="modal-footer">
-        <a href="#" data-dismiss="modal" class="btn">Imputat i diagnosticat</a>
+        <a href="#" data-dismiss="modal" class="btn">Imputat i diagnosticada</a>
         <a href="#" data-dismiss="modal" class="btn btn-primary chargeAction">Imputat</a>
     </div>
 </div>

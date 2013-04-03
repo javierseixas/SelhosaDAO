@@ -108,4 +108,10 @@ class Material
     {
         return $this->costPrice;
     }
+
+
+    public function __toString()
+    {
+        return $this->reference;
+    }
 }

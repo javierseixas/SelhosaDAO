@@ -58,7 +58,7 @@ class ListFilter
     {
         $qb = $this->em->createQueryBuilder();
         $qb->select('dwo')
-            ->from('SelhosaWorkBundle:WorkOrder','dwo')
+            ->from('SelhosaRepairBundle:Repair','dwo')
             ->innerJoin('dwo.current_status','wos')
             ->where($qb->expr()->eq('dwo.current_status', ':status_id'))
             ->setParameter('status_id', $statusId);

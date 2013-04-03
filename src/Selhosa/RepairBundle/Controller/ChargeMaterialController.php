@@ -4,47 +4,58 @@ namespace Selhosa\RepairBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Selhosa\WorkBundle\Entity\WorkOrderStatus;
-use Selhosa\RepairBundle\Form\Type\ChargeMaterialType;
+use Selhosa\RepairBundle\Form\Type\RepairMaterialChargesType;
+use Selhosa\RepairBundle\Entity\Repair;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 
 class ChargeMaterialController extends Controller
 {
 
-    public function renderFormAction()
+    public function processFormAction($repairId)
     {
-        // TODO Falta seguridad
-        //if (false === $this->get('security.context')->isGranted('ROLE_MANAGER')) {
-        //    throw new AccessDeniedException();
-        //}
+        if (false === $this->get('security.context')->isGranted('ROLE_TECHNICIAN')) {
+            throw new AccessDeniedException();
+        }
 
         $request = $this->getRequest();
 
-        // TODO Get current charged materials
+        $repair = $this->getDoctrine()->getManager()->getRepository('SelhosaRepairBundle:Repair')->find($repairId);
 
-        // TODO Pulir la manera como se recuperan los modelos. Probablemente no sea falta recuperar todos los objetos
-        $models = $this->getDoctrine()->getManager()->getRepository('SelhosaElectronicBundle:Electronic')->findAllModels();
+        $originalMaterialsCharged = $repair->getMaterialCharges();
 
-        $form = $this->createForm(new ChargeMaterialType());
+        $form = $this->createForm(new RepairMaterialChargesType($repairId),$repair);
 
         if ($request->isMethod('POST')) {
             $form->bind($request);
 
             if ($form->isValid()) {
 
-//                $electronicCreator = $this->get('selhosa.electronic.creator');
-//                $electronicCreator->create($workorder);
-//
-//                $em = $this->getDoctrine()->getManager();
-//                $em->persist($workorder);
-//                $em->flush();
+                $em = $this->getDoctrine()->getManager();
 
-                return $this->redirect($this->generateUrl('selhosa_reparation_homepage'));
+                $materialCreator = $this->get('selhosa.repair.material_creator');
+                $materialCreator->create($repair);
+
+                // filter $originalTags to contain tags no longer present
+                foreach ($repair->getMaterialCharges() as $charge) {
+                    foreach ($originalMaterialsCharged as $key => $toDel) {
+                        if ($toDel->getId() === $charge->getId()) {
+                            unset($originalMaterialsCharged[$key]);
+                        }
+                    }
+                }
+
+                foreach ($originalMaterialsCharged as $materialCharged) {
+                    $repair->removeCharge($materialCharged);
+                    $em->remove($materialCharged);
+                }
+
+                $em->persist($repair);
+                $em->flush();
+
+                return new JsonResponse(array('success' => true));
             }
         }
 
-        return $this->render('SelhosaRepairBundle:ChargeMaterialModal:form.html.twig', array(
-            'form' => $form->createView(),
-            'models' => $models
-        ));
     }
 }

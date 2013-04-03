@@ -4,6 +4,7 @@ namespace Selhosa\RepairBundle\Entity;
 
 use Selhosa\WorkBundle\Entity\WorkOrder;
 use Doctrine\Common\Collections\ArrayCollection;
+use Selhosa\RepairBundle\Entity\Charges;
 
 /**
  * WorkOrder
@@ -28,10 +29,15 @@ class Repair extends WorkOrder
     // TODO Pulir que Repair tenga categories, que no pega mucho porque no tiene relación en la otra entidad
     private $categories;
 
+    // TODO Estudiar si se puede evitar esto, ya que no existe relación en la base de datos
+    // Se utiliza para el imputar materiales desde el flujo de trabajo por modal
+    private $materials;
+
 
     public function __construct()
     {
         $this->charges = new ArrayCollection();
+        $this->materials = new ArrayCollection();
 
         parent::__construct();
     }
@@ -69,11 +75,13 @@ class Repair extends WorkOrder
      * Add charges
      *
      * @param \Selhosa\RepairBundle\Entity\Charges $charges
-     * @return WorkOrder
+     * @return Charges
      */
-    public function addCharge(\Selhosa\RepairBundle\Entity\Charges $charges)
+    public function addCharge(Charges $charge)
     {
-        $this->charges[] = $charges;
+        if (!$this->charges->contains($charge)) {
+            $this->charges->add($charge);
+        }
 
         return $this;
     }
@@ -81,11 +89,11 @@ class Repair extends WorkOrder
     /**
      * Remove charges
      *
-     * @param \Selhosa\RepairBundle\Entity\Charges $charges
+     * @param \Selhosa\RepairBundle\Entity\Charges $charge
      */
-    public function removeCharge(\Selhosa\RepairBundle\Entity\Charges $charges)
+    public function removeCharge(Charges $charge)
     {
-        $this->charges->removeElement($charges);
+        $this->charges->removeElement($charge);
     }
 
     /**
@@ -96,6 +104,80 @@ class Repair extends WorkOrder
     public function getCharges()
     {
         return $this->charges;
+    }
+
+    /**
+     * @param \Doctrine\Common\Collections\ArrayCollection $charges
+     */
+    public function setCharges(ArrayCollection $charges)
+    {
+        $this->charges = $charges;
+    }
+
+    /**
+     * Get material charges
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getMaterialCharges()
+    {
+        return array_filter($this->charges->toArray(), function($charge) { if ($charge->getMaterial()) return true;  } );
+    }
+
+
+    /**
+     * Add material charges
+     *
+     * @param \Selhosa\RepairBundle\Entity\Charges $charges
+     * @return Charges
+     */
+    public function setMaterialCharges(array $charges)
+    {
+        foreach($charges as $charge) {
+            $this->addCharge($charge);
+        }
+
+        return $this;
+    }
+
+
+    /**
+     * Add materials
+     *
+     * @param \Selhosa\MaterialBundle\Entity\Material $materials
+     * @return Material
+     */
+    public function addMaterial(\Selhosa\MaterialBundle\Entity\Material $material)
+    {
+        $this->materials[] = $material;
+
+        $charges = new Charges();
+        $charges->setMaterial($material);
+        $charges->setRepair($this);
+        $this->addCharge($charges);
+
+        return $this;
+    }
+
+    /**
+     * Remove materials
+     *
+     * @param \Selhosa\MaterialBundle\Entity\Material $materials
+     */
+    public function removeMaterial(\Selhosa\MaterialBundle\Entity\Material $material)
+    {
+        $this->materials->removeElement($material);
+
+    }
+
+    /**
+     * Get materials
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getMaterials()
+    {
+        return $this->materials;
     }
 
 }

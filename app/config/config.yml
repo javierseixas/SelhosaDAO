@@ -79,5 +79,11 @@ fos_user:
 
 stof_doctrine_extensions:
     orm:
-      default:
+        default:
             timestampable: true
+
+services:
+    twig.extension.debug:
+        class: Twig_Extensions_Extension_Debug
+        tags:
+            - { name: twig.extension }

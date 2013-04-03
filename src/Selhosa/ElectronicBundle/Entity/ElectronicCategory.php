@@ -169,7 +169,7 @@ class ElectronicCategory
      */
     public function addIntervention(\Selhosa\RepairBundle\Entity\Intervention $interventions)
     {
-        $this->interventions[] = $interventions;
+        $this->interventions->add($interventions);
     
         return $this;
     }

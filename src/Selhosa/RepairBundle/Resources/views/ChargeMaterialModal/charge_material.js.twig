@@ -1,13 +1,44 @@
-<script>
+<script type="text/javascript">
 
     jQuery(document).ready(function() {
 
+        jQuery('.material-fields-list').find('li').each(function() {
+            addTagFormDeleteLink($(this));
+        });
+
+        jQuery('.add_material_charge').click(function() {
+            var repairId = $(this).data('repairid');
+            emailCount = jQuery('#material-fields-list-'+repairId).children().length;
+            var emailList = jQuery('#material-fields-list-'+repairId);
+            var newWidget = emailList.attr('data-prototype');
+            newWidget = newWidget.replace(/__name__/g, emailCount);
+            emailCount++;
+
+            var newLi = jQuery('<li></li>').html(newWidget);
+            newLi.appendTo(jQuery('#material-fields-list-'+repairId));
+            addTagFormDeleteLink(newLi);
+
+            return false;
+        });
+
         $('.chargeAction').click(function() {
             var form = $(this).parents('div').siblings('.modal-body').children('form');
-            form.ajaxForm({url: '{{ path('selhosa_reparation_charge_material') }}', type: 'post' });
+            form.ajaxForm({url: form.attr('action'), type: 'post' });
             form.ajaxSubmit();
         });
 
+
     });
+
+    function addTagFormDeleteLink($tagFormLi) {
+        var $removeFormA = $tagFormLi.find('button.close');
+
+        $removeFormA.on('click', function(e) {
+            e.preventDefault();
+
+            $tagFormLi.remove();
+        });
+
+    };
 
 </script>

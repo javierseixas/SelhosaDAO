@@ -1,0 +1,27 @@
+{% block _repair_material_charges_materialCharges_entry_material_widget %}
+    <div class="form-horizontal" style="padding: 10px; margin-bottom: 6px; background: #eaeaea;">
+        {{ form_widget(form.reference) }}{{ form_widget(form.costPrice) }} <button type="button" class="close">&times;</button>
+    </div>
+{% endblock _repair_material_charges_materialCharges_entry_material_widget %}
+
+{% block _repair_material_charges_materialCharges_entry_widget %}
+    {% for material in form.children %}
+        {{ form_widget(material) }}
+    {% endfor %}
+{% endblock _repair_material_charges_materialCharges_entry_widget %}
+
+{% block _repair_material_charges_widget %}
+    {% spaceless %}
+
+        {{ form_errors(form.materialCharges) }}
+
+        <ul class="unstyled material-fields-list" id="material-fields-list-{{ repairId }}" data-prototype="{{ form_widget(form.materialCharges.vars.prototype) | e }}">
+            {% for materialCharge in form.materialCharges %}
+                <li>
+                    {{ form_widget(materialCharge) }}
+                </li>
+            {% endfor %}
+        </ul>
+
+    {% endspaceless %}
+{% endblock _repair_material_charges_widget %}

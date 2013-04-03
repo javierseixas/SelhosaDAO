@@ -97,7 +97,7 @@ class Charges
      * @param \Selhosa\RepairBundle\Entity\Repair $repairs
      * @return Charges
      */
-    public function setRepair(\Selhosa\RepairBundle\Entity\Repair $repair)
+    public function setRepair(\Selhosa\RepairBundle\Entity\Repair $repair=null)
     {
         $this->repair = $repair;
     
@@ -136,4 +136,33 @@ class Charges
     {
         return $this->intervention;
     }
+    /**
+     * @var \Selhosa\MaterialBundle\Entity\Material
+     */
+    private $material;
+
+
+    /**
+     * Set material
+     *
+     * @param \Selhosa\MaterialBundle\Entity\Material $material
+     * @return Charges
+     */
+    public function setMaterial(\Selhosa\MaterialBundle\Entity\Material $material = null)
+    {
+        $this->material = $material;
+    
+        return $this;
+    }
+
+    /**
+     * Get material
+     *
+     * @return \Selhosa\MaterialBundle\Entity\Material 
+     */
+    public function getMaterial()
+    {
+        return $this->material;
+    }
+
 }

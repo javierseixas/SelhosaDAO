@@ -13,6 +13,7 @@ Selhosa\MaterialBundle\Entity\Material:
         description:
             type: string
             length: '255'
+            nullable: true
         costPrice:
             type: decimal
             precision: 2

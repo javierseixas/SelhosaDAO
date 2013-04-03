@@ -1,0 +1,1 @@
+ALTER TABLE Material CHANGE description description VARCHAR(255) DEFAULT NULL;
