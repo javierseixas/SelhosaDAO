@@ -65,4 +65,9 @@ class ElectronicCategoryIntervention
     {
         return $this->intervention;
     }
+
+    public function __toString()
+    {
+        return $this->intervention->getDescription();
+    }
 }

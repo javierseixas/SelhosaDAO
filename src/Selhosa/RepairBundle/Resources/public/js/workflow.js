@@ -19,9 +19,9 @@ $(document).ready(function () {
 
     $('.change-workorderstatus').each(function() {
         var workorderid,statuskeyword;
-       $(this).click(function() {
-           changeStatus($(this).data('workorderid'),$(this).data('newstatuskeyword'),$(this).data('metadata'));
-       })
+        $(this).click(function() {
+            changeStatus($(this).data('workorderid'),$(this).data('newstatuskeyword'),$(this).data('metadata'));
+        })
     });
 
 });

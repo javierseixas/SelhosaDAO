@@ -34,6 +34,7 @@
             <thead>
                 <tr>
                     <th>OT</th>
+                    <th>Model</th>
                     <th>Entrada</th>
                     <th></th>
                     <th>Tècnic</th>
@@ -45,6 +46,7 @@
                 {% for workorder in workorders %}
                 <tr id="workorder-{{ workorder.id }}">
                     <td>{{ workorder.reference }}</td>
+                    <td>{{ workorder.model }}</td>
                     <td>{{ workorder.createdAt | date('d/m/Y') }}</td>
                     <td>
                         {% if workorder.priority %}
@@ -61,7 +63,7 @@
                     </td>
                     <td>
                         <div class="btn-group">
-                            <button data-toggle="dropdown" class="btn dropdown-toggle">Action <span class="caret"></span></button>
+                            <button data-toggle="dropdown" class="btn btn-small dropdown-toggle">Action <span class="caret"></span></button>
                             <ul class="dropdown-menu">
                                 {% if is_granted('ROLE_MANAGER') %}
                                     <li><a href="{{ path('selhosa_reparation_update', {'id' : workorder.id}) }}">Editar</a></li>

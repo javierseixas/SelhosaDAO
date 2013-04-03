@@ -1,0 +1,19 @@
+<div class="modal hide fade" id="repairModal-{{ workorder.id }}">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h3>Finalització de la reparació</h3>
+    </div>
+    <div class="modal-body">
+        <form action="{{ path('selhosa_reparation_charge_material', { 'repairId': workorder.id }) }}" method="post">
+
+            {{ form_widget(finishingRepairFormViews[workorder.id]) }}
+
+            {{ form_rest(finishingRepairFormViews[workorder.id]) }}
+
+        </form>
+    </div>
+    <div class="modal-footer">
+        <a href="#" data-dismiss="modal" class="btn btn-link">Cancel·lar</a>
+        <a href="#" data-dismiss="modal" class="btn btn-primary change-workorderstatus" data-workorderid="{{ workorder.id }}" data-newstatuskeyword="close">Reparada</a>
+    </div>
+</div>

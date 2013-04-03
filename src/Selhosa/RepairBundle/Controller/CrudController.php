@@ -6,7 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Selhosa\RepairBundle\Entity\Repair;
 use Selhosa\RepairBundle\Entity\DOARepair;
 use Selhosa\WorkBundle\Entity\WorkOrderStatus;
-use Selhosa\RepairBundle\Form\Type\WorkorderType;
+use Selhosa\RepairBundle\Form\Type\FinishingRepairType;
 use Selhosa\RepairBundle\Form\Type\DOARepairType;
 use Selhosa\RepairBundle\Form\Type\Filter\ReparationWorkflowListFilterType;
 use Selhosa\RepairBundle\Form\Type\RepairMaterialChargesType;
@@ -28,6 +28,8 @@ class CrudController extends Controller
         $chargeMaterialFormViews = array();
         foreach ($repairs as $repair) {
             $chargeMaterialFormViews[$repair->getId()] = $this->createForm(new RepairMaterialChargesType($repair->getId()), $repair)->createView();
+            // TODO Mirar si se puede evitar pasar el parámetro en el construct de FinishingRepairType
+            $finishingRepairFormViews[$repair->getId()] = $this->createForm(new FinishingRepairType($repair), $repair)->createView();
         }
 
         $buttonsTemplate = $this->get('reparation.workflow.buttons.dumper')->getTemplate($statusKeyword);
@@ -37,7 +39,8 @@ class CrudController extends Controller
             'buttonsTemplate' => $buttonsTemplate,
             'filter' => $filter->createView(),
             'currentStatus' => $currentStatus,
-            'chargeMaterialFormViews' => $chargeMaterialFormViews
+            'chargeMaterialFormViews' => $chargeMaterialFormViews,
+            'finishingRepairFormViews' => $finishingRepairFormViews
         ));
     }
 

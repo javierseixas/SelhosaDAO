@@ -1,6 +1,6 @@
 <div class="btn-group">
     <div class="btn-group">
-        <button class="btn btn-small dropdown-toggle" data-toggle="dropdown">
+        <button class="btn btn-small dropdown-toggle" data-toggle="modal" data-target="#repairModal-{{ workorder.id }}">
             Reparada
             <span class="caret"></span>
         </button>
@@ -13,3 +13,5 @@
 
     <button class="btn btn-small change-workorderstatus" type="button" data-workorderid="{{ workorder.id }}" data-newstatuskeyword="orderMaterial">Nou material imputat</button>
 </div>
+
+{% include "SelhosaRepairBundle:RepairModal:modal.html.twig" %}
