@@ -1,7 +1,7 @@
 <div class="btn-group">
-    <button class="btn btn-mini change-workorderstatus" type="button" data-workorderid="{{ workorder.id }}" data-newstatuskeyword="orderMaterial">Diagnosticada</button>
-    <button class="btn btn-mini change-workorderstatus" type="button" data-workorderid="{{ workorder.id }}" data-newstatuskeyword="close">Reparada</button>
-    <button class="btn btn-primary btn-mini charge-material" type="button" data-workorderid="{{ workorder.id }}" data-toggle="modal" data-target="#chargeMaterialModal-{{ workorder.id }}">Imputar material</button>
+    <button class="btn btn-small change-workorderstatus" type="button" data-workorderid="{{ workorder.id }}" data-newstatuskeyword="orderMaterial">Diagnosticada</button>
+    <button class="btn btn-small change-workorderstatus" type="button" data-workorderid="{{ workorder.id }}" data-newstatuskeyword="close">Reparada</button>
+    <button class="btn btn-primary btn-small charge-material" type="button" data-workorderid="{{ workorder.id }}" data-toggle="modal" data-target="#chargeMaterialModal-{{ workorder.id }}">Imputar material</button>
 </div>
 
 {% include "SelhosaRepairBundle:ChargeMaterialModal:modal.html.twig" %}
